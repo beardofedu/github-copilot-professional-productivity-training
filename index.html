@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="GitHub Copilot for Professional Productivity — a one-hour training experience.">
+  <title>GitHub Copilot for Professional Productivity</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="GitHub Copilot for Professional Productivity home">
+      <span class="brand-mark">✦</span>
+      <span>Professional Productivity</span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="#agenda">Agenda</a>
+      <a href="#prompting">Prompting</a>
+      <a href="#demo">Demo</a>
+      <a href="#experiment">Try it</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero slide-section">
+      <div class="hero-accent" aria-hidden="true"></div>
+      <div class="eyebrow">GitHub Copilot training · 60 minutes</div>
+      <h1>Move from<br><span>“I installed it”</span><br>to “I know what to do next.”</h1>
+      <p class="hero-lede">A practical guide to using Copilot to accelerate the skills, judgment, and workflows you already have.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#agenda">Start the training</a>
+        <a class="button button-secondary" href="learner-handout.md">Download the handout</a>
+      </div>
+      <p class="hero-note">For professionals who use scripting, documents, data, and operational workflows—not only professional developers.</p>
+    </section>
+
+    <section id="outcome" class="slide-section split-section">
+      <div>
+        <div class="eyebrow">The outcome</div>
+        <h2>Bring Copilot a real task.</h2>
+        <p>By the end of this session, you will be able to turn a real work task into a useful Copilot interaction, choose the right Copilot surface, improve the first result, and verify it before use.</p>
+      </div>
+      <div class="callout-card">
+        <p class="quote">“Your judgment stays in the driver’s seat.”</p>
+        <p>Copilot can accelerate production, but it does not transfer accountability.</p>
+      </div>
+    </section>
+
+    <section id="agenda" class="slide-section">
+      <div class="eyebrow">The 60-minute path</div>
+      <h2>From uncertainty to a repeatable workflow.</h2>
+      <div class="agenda-grid">
+        <article><span>01</span><h3>Set the intention</h3><p>Name the “blank chat box” problem and establish relevance.</p></article>
+        <article><span>02</span><h3>Find the fit</h3><p>Match productivity patterns to the Copilot surface where work lives.</p></article>
+        <article><span>03</span><h3>Prompt with purpose</h3><p>Use Goal–Context–Constraints–Check to get a stronger first result.</p></article>
+        <article><span>04</span><h3>Watch one workflow</h3><p>Follow one task across the Copilot app, CLI, VS Code, and GitHub.com.</p></article>
+        <article><span>05</span><h3>Verify responsibly</h3><p>Check accuracy, safety, policy, and fitness for the real environment.</p></article>
+        <article><span>06</span><h3>Choose your experiment</h3><p>Leave with one bounded task to try within the next week.</p></article>
+      </div>
+    </section>
+
+    <section id="patterns" class="slide-section tinted-section">
+      <div class="eyebrow">Five productivity patterns</div>
+      <h2>Start with the work, not the feature.</h2>
+      <div class="pattern-grid">
+        <article class="pattern-card"><strong>Understand</strong><p>Explain unfamiliar text, code, errors, or repository content.</p></article>
+        <article class="pattern-card"><strong>Draft</strong><p>Create a first version of a script, checklist, summary, or plan.</p></article>
+        <article class="pattern-card"><strong>Transform</strong><p>Reformat, simplify, classify, extract, compare, or translate.</p></article>
+        <article class="pattern-card"><strong>Automate</strong><p>Turn a repeatable manual sequence into a script or command.</p></article>
+        <article class="pattern-card"><strong>Review</strong><p>Find gaps, edge cases, risks, and opportunities to improve.</p></article>
+      </div>
+    </section>
+
+    <section id="surfaces" class="slide-section">
+      <div class="eyebrow">Choose a workspace</div>
+      <h2>Start where the work already lives.</h2>
+      <div class="surface-list">
+        <div class="surface-row"><span class="surface-icon">◈</span><div><h3>Copilot app</h3><p>Broad, ambiguous, or cross-task work. Shape the workflow before touching files.</p></div></div>
+        <div class="surface-row"><span class="surface-icon">›_</span><div><h3>Copilot CLI</h3><p>Commands, files, and terminal workflows. Start with safe, read-only inspection.</p></div></div>
+        <div class="surface-row"><span class="surface-icon">{ }</span><div><h3>VS Code</h3><p>Scripts, configuration, and structured text. Create, refine, and test the artifact.</p></div></div>
+        <div class="surface-row"><span class="surface-icon">◉</span><div><h3>GitHub.com</h3><p>Issues, pull requests, repositories, and handoffs. Make work shareable and reviewable.</p></div></div>
+      </div>
+    </section>
+
+    <section id="prompting" class="slide-section dark-section">
+      <div class="eyebrow">A repeatable prompt</div>
+      <h2>Goal · Context · Constraints · Check</h2>
+      <p class="dark-lede">A simple pattern for turning a blank chat box into a productive conversation.</p>
+      <div class="prompt-grid">
+        <div><span>Goal</span><p>What outcome do I need?</p></div>
+        <div><span>Context</span><p>What must Copilot know about the source, audience, environment, or workflow?</p></div>
+        <div><span>Constraints</span><p>What must it use, avoid, preserve, or limit?</p></div>
+        <div><span>Check</span><p>How will I verify that the result is correct and safe?</p></div>
+      </div>
+    </section>
+
+    <section id="example" class="slide-section">
+      <div class="eyebrow">From vague to useful</div>
+      <h2>Give Copilot enough to work with.</h2>
+      <div class="comparison">
+        <div class="comparison-card weak"><span class="label">Weak</span><p>“Make me a script for this report.”</p><small>Copilot must guess the goal, environment, boundaries, and success criteria.</small></div>
+        <div class="comparison-card strong"><span class="label">Stronger</span><p><b>Goal:</b> Find incomplete CSV records and write a summary.<br><b>Context:</b> Windows; four known columns; run every Friday.<br><b>Constraints:</b> Do not modify the source; built-in PowerShell only.<br><b>Check:</b> Explain first; include tests for valid, incomplete, and empty files.</p></div>
+      </div>
+    </section>
+
+    <section id="demo" class="slide-section tinted-section">
+      <div class="eyebrow">One task, four surfaces</div>
+      <h2>A weekly status workflow.</h2>
+      <p class="section-intro">A program coordinator receives a CSV export and rough notes. The goal is to identify missing owners or due dates, create a concise summary, and prepare a GitHub issue.</p>
+      <div class="workflow">
+        <div><b>1</b><h3>Copilot app</h3><p>Clarify the workflow and identify human decisions.</p></div>
+        <div><b>2</b><h3>CLI</h3><p>Inspect the files safely with read-only commands.</p></div>
+        <div><b>3</b><h3>VS Code</h3><p>Create, review, and test the PowerShell script.</p></div>
+        <div><b>4</b><h3>GitHub.com</h3><p>Turn the result into a clear, reviewable handoff.</p></div>
+      </div>
+      <a class="text-link" href="demo-script.md">Open the complete demonstration script →</a>
+    </section>
+
+    <section id="conversation" class="slide-section">
+      <div class="eyebrow">The first output is a draft</div>
+      <h2>Make it a conversation.</h2>
+      <div class="steps">
+        <span><b>1</b>Ask for a plan.</span>
+        <span><b>2</b>Inspect assumptions.</span>
+        <span><b>3</b>Request a small first version.</span>
+        <span><b>4</b>Test it.</span>
+        <span><b>5</b>Share the exact result or error.</span>
+        <span><b>6</b>Refine only what needs improvement.</span>
+      </div>
+    </section>
+
+    <section id="trust" class="slide-section dark-section">
+      <div class="eyebrow">Responsible use</div>
+      <h2>Keep ownership of the result.</h2>
+      <div class="trust-grid">
+        <div><span>Accuracy</span><p>Does it match the source and intended outcome?</p></div>
+        <div><span>Safety</span><p>Could it modify, overwrite, delete, or disclose anything?</p></div>
+        <div><span>Policy</span><p>Is the information appropriate to provide under organizational rules?</p></div>
+        <div><span>Fitness</span><p>Does it work in the real environment, not only in the example?</p></div>
+      </div>
+      <p class="warning">Confident language is not evidence.</p>
+    </section>
+
+    <section id="experiment" class="slide-section experiment-section">
+      <div class="eyebrow">Your next step</div>
+      <h2>Choose a one-week experiment.</h2>
+      <p>Pick a task you already understand, that takes 15–60 minutes, happens more than once, and has a result you can verify.</p>
+      <div class="experiment-card">
+        <label>My task <span>Write a sentence.</span></label>
+        <label>My Copilot surface <span>App · CLI · VS Code · GitHub.com</span></label>
+        <label>Context I will provide <span>What will Copilot otherwise have to guess?</span></label>
+        <label>Constraint I will set <span>What must it preserve or avoid?</span></label>
+        <label>How I will check the result <span>What evidence will make it trustworthy?</span></label>
+      </div>
+      <a class="button button-primary" href="learner-handout.md">Open the learner handout</a>
+    </section>
+
+    <section class="closing slide-section">
+      <div class="eyebrow">Questions?</div>
+      <h2>Bring a task.<br>Add context and boundaries.<br>Check the result.</h2>
+      <p>Your expertise is what makes Copilot useful.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>GitHub Copilot for Professional Productivity</span>
+    <span><a href="training-plan.md">Training plan</a> · <a href="facilitator-guide.md">Facilitator guide</a></span>
+  </footer>
+</body>
+</html>
