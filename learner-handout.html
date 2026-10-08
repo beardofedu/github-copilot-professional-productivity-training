@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interactive learner handout for GitHub Copilot for Professional Productivity.">
+  <title>Learner Handout · GitHub Copilot for Professional Productivity</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="handout.css">
+</head>
+<body class="handout-body">
+  <header class="site-header handout-nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">✦</span>
+      <span>Professional Productivity</span>
+    </a>
+    <div class="handout-actions">
+      <a href="index.html">Training site</a>
+      <button class="print-button" type="button" onclick="window.print()">Print or save PDF</button>
+    </div>
+  </header>
+
+  <main class="handout">
+    <section class="handout-hero">
+      <div class="handout-hero-copy">
+        <div class="eyebrow">Learner field guide</div>
+        <h1>Turn a real task into a useful Copilot conversation.</h1>
+        <p>Use this guide during the session, then keep it nearby for your first week of practice.</p>
+      </div>
+      <div class="hero-stamp" aria-label="Four step framework">
+        <span>Goal</span>
+        <span>Context</span>
+        <span>Constraints</span>
+        <span>Check</span>
+      </div>
+    </section>
+
+    <section class="handout-section start-section">
+      <div class="section-number">01</div>
+      <div>
+        <div class="eyebrow">Start with work, not a feature</div>
+        <h2>What kind of help do you need?</h2>
+        <p class="section-lede">Choose a task you already understand and can verify. Good first tasks are repeated, bounded, and low-risk.</p>
+        <div class="help-grid">
+          <label class="help-card">
+            <input type="checkbox">
+            <span class="help-icon">?</span>
+            <span><strong>Understand</strong><small>Explain unfamiliar material, code, or errors.</small></span>
+          </label>
+          <label class="help-card">
+            <input type="checkbox">
+            <span class="help-icon">✎</span>
+            <span><strong>Draft</strong><small>Create a useful first version.</small></span>
+          </label>
+          <label class="help-card">
+            <input type="checkbox">
+            <span class="help-icon">⇄</span>
+            <span><strong>Transform</strong><small>Restructure or simplify information.</small></span>
+          </label>
+          <label class="help-card">
+            <input type="checkbox">
+            <span class="help-icon">⚙</span>
+            <span><strong>Automate</strong><small>Script repeatable steps.</small></span>
+          </label>
+          <label class="help-card">
+            <input type="checkbox">
+            <span class="help-icon">✓</span>
+            <span><strong>Review</strong><small>Find gaps, risks, and edge cases.</small></span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <section class="handout-section framework-section">
+      <div class="section-number">02</div>
+      <div>
+        <div class="eyebrow">The prompting pattern</div>
+        <h2>Goal · Context · Constraints · Check</h2>
+        <div class="framework-grid">
+          <article>
+            <div class="framework-letter">G</div>
+            <h3>Goal</h3>
+            <p>What outcome do I need?</p>
+            <textarea data-save="framework-goal" aria-label="Goal notes" placeholder="I need to…"></textarea>
+          </article>
+          <article>
+            <div class="framework-letter">C</div>
+            <h3>Context</h3>
+            <p>What does Copilot need to know?</p>
+            <textarea data-save="framework-context" aria-label="Context notes" placeholder="The source, audience, environment…"></textarea>
+          </article>
+          <article>
+            <div class="framework-letter">C</div>
+            <h3>Constraints</h3>
+            <p>What must it use, avoid, or preserve?</p>
+            <textarea data-save="framework-constraints" aria-label="Constraints notes" placeholder="Do not… Must use… Keep…"></textarea>
+          </article>
+          <article>
+            <div class="framework-letter">C</div>
+            <h3>Check</h3>
+            <p>How will I verify the result?</p>
+            <textarea data-save="framework-check" aria-label="Verification notes" placeholder="I will know it works when…"></textarea>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="handout-section example-section">
+      <div class="section-number">03</div>
+      <div>
+        <div class="eyebrow">Worked example</div>
+        <h2>Give Copilot less to guess.</h2>
+        <div class="example-prompt">
+          <p><strong>Goal</strong> Create a script that identifies incomplete rows in a weekly CSV and writes a Markdown summary.</p>
+          <p><strong>Context</strong> The columns are Item, Owner, DueDate, and Status. I run this manually on Windows every Friday.</p>
+          <p><strong>Constraints</strong> Do not modify the CSV. Use built-in PowerShell features. Explain the approach before showing code.</p>
+          <p><strong>Check</strong> Include a dry-run example and tests for valid, incomplete, and empty input files.</p>
+        </div>
+        <div class="tip">
+          <span>Tip</span>
+          <p>A prompt is not a one-time incantation. Ask for a plan, inspect assumptions, test a small result, and refine it.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="handout-section surface-section">
+      <div class="section-number">04</div>
+      <div>
+        <div class="eyebrow">Choose the surface</div>
+        <h2>Where does the work already live?</h2>
+        <div class="surface-map">
+          <article><div class="map-icon">◈</div><div><h3>Copilot app</h3><p>Broad, ambiguous, or spread across tasks</p></div></article>
+          <article><div class="map-icon">›_</div><div><h3>Copilot CLI</h3><p>Commands, files, or a terminal workflow</p></div></article>
+          <article><div class="map-icon">{ }</div><div><h3>VS Code</h3><p>Scripts, configuration, or structured text</p></div></article>
+          <article><div class="map-icon">◉</div><div><h3>GitHub.com</h3><p>Issues, pull requests, or repository work</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="handout-section conversation-section">
+      <div class="section-number">05</div>
+      <div>
+        <div class="eyebrow">Iterate</div>
+        <h2>Make it a conversation.</h2>
+        <ol class="conversation-path">
+          <li><span>1</span><div><strong>Ask for a plan</strong><p>Understand the proposed approach before creating anything.</p></div></li>
+          <li><span>2</span><div><strong>Inspect assumptions</strong><p>Find what Copilot guessed and correct what matters.</p></div></li>
+          <li><span>3</span><div><strong>Request a small first version</strong><p>Reduce risk and make the result easier to review.</p></div></li>
+          <li><span>4</span><div><strong>Test or verify it</strong><p>Use representative inputs, sources, or observable criteria.</p></div></li>
+          <li><span>5</span><div><strong>Share the exact result or error</strong><p>Specific evidence produces better troubleshooting.</p></div></li>
+          <li><span>6</span><div><strong>Refine what needs improvement</strong><p>Keep useful work and change only what is necessary.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="handout-section verify-section">
+      <div class="section-number">06</div>
+      <div>
+        <div class="eyebrow">Before you use or share it</div>
+        <h2>Run the four-part verification check.</h2>
+        <div class="verify-grid">
+          <label><input type="checkbox"><span><strong>Accuracy</strong>Does it match the source and intended outcome?</span></label>
+          <label><input type="checkbox"><span><strong>Safety</strong>Could it modify, overwrite, delete, or disclose anything?</span></label>
+          <label><input type="checkbox"><span><strong>Policy</strong>Is the information appropriate to provide and share?</span></label>
+          <label><input type="checkbox"><span><strong>Fitness</strong>Did you test it in the real environment or with representative data?</span></label>
+        </div>
+        <p class="evidence-note">Confident language is not evidence. Open sources, inspect commands, and test results.</p>
+      </div>
+    </section>
+
+    <section class="experiment-workbook">
+      <div class="eyebrow">My one-week experiment</div>
+      <h2>Turn one useful idea into practice.</h2>
+      <p>Choose a task that takes 15–60 minutes, happens more than once, and has a result you can verify.</p>
+      <div class="workbook-fields">
+        <label><span>My task</span><textarea data-save="experiment-task" placeholder="The work I want to accelerate is…"></textarea></label>
+        <label><span>My Copilot surface</span><input data-save="experiment-surface" type="text" placeholder="Copilot app, CLI, VS Code, or GitHub.com"></label>
+        <label><span>Context I will provide</span><textarea data-save="experiment-context" placeholder="Copilot needs to know…"></textarea></label>
+        <label><span>Constraint I will set</span><textarea data-save="experiment-constraint" placeholder="The result must… / must not…"></textarea></label>
+        <label><span>How I will check the result</span><textarea data-save="experiment-check" placeholder="I will verify it by…"></textarea></label>
+      </div>
+      <div class="commitment">
+        <label><input type="checkbox"> I will try this task within the next seven days.</label>
+        <button type="button" class="clear-button" id="clear-notes">Clear saved notes</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer handout-footer">
+    <span>GitHub Copilot for Professional Productivity</span>
+    <span><a href="index.html">Training site</a> · <a href="learner-handout.md">Plain-text version</a></span>
+  </footer>
+
+  <script>
+    const fields = document.querySelectorAll("[data-save]");
+    fields.forEach((field) => {
+      field.value = localStorage.getItem(field.dataset.save) || "";
+      field.addEventListener("input", () => localStorage.setItem(field.dataset.save, field.value));
+    });
+    document.getElementById("clear-notes").addEventListener("click", () => {
+      fields.forEach((field) => {
+        field.value = "";
+        localStorage.removeItem(field.dataset.save);
+      });
+    });
+  </script>
+</body>
+</html>
