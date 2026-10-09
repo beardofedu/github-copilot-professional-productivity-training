@@ -1,124 +1,189 @@
-# Demonstration Script: One Task, Four Surfaces
+# Demonstration Script: Multi-Source Report in Agent Mode
 
 ## Scenario
 
-A program coordinator receives a weekly CSV export and a few rough notes. They need to:
+A five-person team produces a weekly account-health report. The process currently requires manually joining CRM and product-usage exports, comparing the results with the prior week, finding records that do not reconcile, and writing a summary.
 
-1. identify records with a missing owner or due date,
-2. produce a short Markdown summary,
-3. and create a GitHub issue for the follow-up work.
+The starter workspace contains:
 
-Use synthetic data throughout.
+- `data/crm_accounts.csv`
+- `data/product_usage.csv`
+- `data/prior_week.csv`
+- `data/account_aliases.json`
+- `DEMO-BRIEF.md`
 
-## Demo data
+The desired capability produces:
 
-Create `weekly-status.csv`:
+- `output/reconciled_accounts.csv`
+- `output/exceptions.csv`
+- `output/weekly-account-health.md`
+- a repeatable Python workflow,
+- automated tests,
+- `RUNBOOK.md`,
+- and `prompts/build-weekly-report.prompt.md`.
 
-```csv
-Item,Owner,DueDate,Status
-Confirm venue,Avery,2026-10-12,In progress
-Publish attendee guide,,2026-10-14,Not started
-Verify accessibility,Jordan,,In progress
-Send final reminder,Sam,2026-10-18,Not started
-Archive materials,Avery,2026-10-22,Planned
-```
+## 1. Orient the room
 
-Create `weekly-notes.txt`:
+Open `demo-workspace/` in VS Code.
 
-```text
-Need follow-up on blank fields.
-The summary should be readable in GitHub.
-Do not change the CSV.
-We need a repeatable process every Friday.
-```
+Point to:
 
-## 1. Copilot app — Shape the work
+- the Explorer and input files,
+- Copilot Chat,
+- the Agent Mode selector,
+- and the integrated terminal.
 
-**Prompt:**
+Do not explain every control. The orientation should take no more than seven minutes including the opening poll.
 
-> I have a weekly CSV status export and rough notes. I need to identify records with a missing owner or due date, create a concise Markdown summary, and prepare a GitHub issue for follow-up. Before suggesting tools or code, break the work into steps, list what you need to know, and identify which decisions require human judgment.
+## 2. Ask Agent Mode to inspect before building
 
-**Teaching point:** Start by clarifying the task. Do not ask for code before understanding the workflow.
+Use Agent Mode:
 
-**Follow-up prompt:**
-
-> Assume the CSV columns are `Item`, `Owner`, `DueDate`, and `Status`; the source file must never be changed; and the process will run manually every Friday. Recommend which parts belong in the CLI, VS Code, and GitHub.com. Include a verification step for each part.
-
-## 2. CLI — Inspect safely
-
-From the demo directory, ask Copilot CLI:
-
-> Explain a read-only command I can use to confirm the CSV exists, display its header, and count its data rows. Do not run or suggest anything that modifies files. Explain each part of the command.
-
-Run the proposed read-only command after inspection.
-
-Then ask:
-
-> Based on the header `Item,Owner,DueDate,Status`, propose a read-only way to identify rows that may have an empty Owner or DueDate. Warn me about any limitations of parsing CSV as plain text.
-
-**Teaching point:** Ask for the safest first step and limitations, not merely a command.
-
-## 3. VS Code — Create and refine the script
-
-Open the demo folder in VS Code.
-
-**Prompt:**
-
-> Create a PowerShell script named `New-WeeklyStatusSummary.ps1`.
+> Inspect this workspace and read `DEMO-BRIEF.md` plus every file under `data/`. Do not create or modify files yet.
 >
-> **Goal:** Read `weekly-status.csv`, identify rows with a missing `Owner` or `DueDate`, and write `weekly-status-summary.md`.
+> Report:
 >
-> **Context:** The columns are `Item`, `Owner`, `DueDate`, and `Status`. The script runs manually on Windows every Friday.
+> 1. the relationships you infer between the sources,
+> 2. data-quality and reconciliation risks,
+> 3. decisions that cannot be made safely from the files,
+> 4. a proposed output contract,
+> 5. and an implementation and validation plan.
 >
-> **Constraints:** Never modify the CSV. Use built-in PowerShell features only. Fail clearly if the file or expected columns are missing. Sort flagged records by Item. Keep the Markdown concise.
->
-> **Check:** First explain your approach. Then provide the script and three manual test cases, including a valid file with no missing fields and an empty CSV.
+> Treat unmatched records as visible exceptions. Do not invent mappings.
 
-Review the generated script before running it.
+Pause and review the plan.
+
+Ask the audience:
+
+> Which assumption would be most dangerous if the agent got it wrong?
+
+If necessary, clarify:
+
+> Use exact `account_id` matches first. Use only mappings explicitly present in `account_aliases.json` as the fallback. Everything else must go to the exception output.
+
+**Teaching point:** Agent Mode should inspect the project and expose assumptions before it changes the project.
+
+## 3. Build the smallest end-to-end workflow
+
+Prompt:
+
+> Implement the smallest complete version of the workflow described in `DEMO-BRIEF.md`.
+>
+> Requirements:
+>
+> - use standard Python only,
+> - keep source files unchanged,
+> - resolve usage records by exact account ID and then the approved alias map,
+> - write unresolved or invalid records to `output/exceptions.csv`,
+> - calculate adoption percentage and week-over-week active-user change,
+> - apply the documented risk rules,
+> - write reconciled detail to `output/reconciled_accounts.csv`,
+> - write an executive-friendly Markdown report,
+> - and fail clearly when required files or columns are missing.
+>
+> Before editing, restate the files you plan to create and the validation you will run. Then implement, run the workflow, and summarize the actual outputs.
+
+When Agent Mode proposes terminal commands, read them before approval.
+
+After it runs, inspect:
+
+- the terminal result,
+- `output/exceptions.csv`,
+- several rows of `output/reconciled_accounts.csv`,
+- and the claims in `output/weekly-account-health.md`.
+
+**Teaching point:** A generated file is not evidence. Running the workflow and inspecting the outputs is part of the task.
+
+## 4. Add tests where failure matters
+
+Prompt:
+
+> Identify the four behaviors most likely to produce a plausible but incorrect report. Add focused automated tests for them using Python's standard `unittest` library.
+>
+> At minimum cover:
+>
+> - an approved alias resolving to the correct CRM account,
+> - an unknown key remaining unmatched,
+> - zero licensed users not causing a divide-by-zero error,
+> - and a missing owner triggering the expected risk flag.
+>
+> Run the tests and report the result. Do not weaken business rules merely to make a test pass.
 
 Ask:
 
-> Review this script for assumptions, destructive behavior, unclear error messages, and edge cases. Do not change it yet. Rank findings by impact.
+> What important behavior is still not proven by these tests?
 
-Then:
+**Teaching point:** Ask the agent to select tests based on consequence, not just coverage.
 
-> Apply only the high-impact fixes. Add a `-WhatIf`-style preview option if that is meaningful for this script; otherwise explain why it is not.
+## 5. Review the work as a skeptical teammate
 
-Run against the synthetic data and inspect `weekly-status-summary.md`.
+Prompt:
 
-**Teaching point:** The first output is a draft. Review and testing are part of prompting.
-
-## 4. GitHub.com — Make the work shareable
-
-Open the demonstration repository on GitHub.com.
-
-Use Copilot to help draft an issue:
-
-> Draft a GitHub issue from this summary. Include:
+> Review the implementation and generated outputs as a skeptical teammate.
 >
-> - a concise problem statement,
-> - the affected records,
-> - acceptance criteria,
-> - an owner-confirmation checklist,
-> - and a verification step.
+> Look specifically for:
 >
-> Do not invent owners or due dates. Mark unknown values as `Needs input`.
+> - silent record loss,
+> - incorrect joins,
+> - non-deterministic output,
+> - date assumptions,
+> - misleading report language,
+> - hard-coded values that should be configuration,
+> - and instructions a teammate would need.
+>
+> Rank findings by impact. Do not edit yet.
 
-Review the issue before publishing. If this is a live environment, stop before submission unless publishing the synthetic issue was explicitly planned.
+Discuss the findings, then direct a bounded refinement:
 
-**Teaching point:** Copilot can turn individual work into a clear, reviewable handoff, but the user owns what is published.
+> Apply the high-impact fixes only. Re-run the tests and workflow, then show which outputs changed and why.
+
+**Teaching point:** Review and refinement are separate decisions. Do not authorize an unbounded rewrite.
+
+## 6. Package the capability for a small team
+
+Prompt:
+
+> Package this workflow for a teammate.
+>
+> Create:
+>
+> 1. `RUNBOOK.md` with purpose, prerequisites, input contracts, the run command, outputs, review steps, and known limitations.
+> 2. `prompts/build-weekly-report.prompt.md` containing a reusable Agent Mode prompt for next week's exports.
+> 3. A concise handoff summary explaining what is automated, what remains human judgment, what exceptions require review, and how the result was validated.
+>
+> Keep the documentation short enough that a teammate will actually use it.
+
+Show the final project structure in Explorer.
+
+Do not draft a GitHub issue. The team handoff is the reviewable project folder: implementation, prompt, runbook, tests, output, and exceptions.
+
+## Brief positioning of the other tools
+
+Use no more than three minutes total:
+
+- **Copilot app:** better when the work begins as cross-project planning or a broad brief.
+- **Copilot CLI:** better when the work is command-first and the terminal is the primary workspace.
+- **VS Code + Agent Mode:** best here because the task spans data files, implementation, execution, tests, documentation, and review.
 
 ## Recovery prompts
 
-If a generated answer is too generic:
+If Agent Mode starts coding too early:
 
-> You made assumptions that are not in my request. List those assumptions, ask only the questions that would materially change the result, and then produce a smaller first version.
+> Stop editing. Return to inspection and list the assumptions that would affect reconciliation or report accuracy.
 
-If code fails:
+If it guesses a match:
 
-> Here is the exact command, complete error, environment, and relevant input. Explain the likely cause, propose the smallest diagnostic check, and wait before changing the script.
+> Remove inferred mappings that are not explicitly supported by an exact ID or the approved alias file. Preserve those records as exceptions.
 
-If the answer is too complex:
+If it produces a polished but unsupported claim:
 
-> Rewrite this for a person who understands the work process but is not a professional developer. Preserve the safeguards and verification steps.
+> Trace each number in the report to the source rows and calculation that support it. Mark anything not supported as an open question.
+
+If the implementation becomes too complex:
+
+> Reduce this to the smallest end-to-end workflow that preserves explicit reconciliation, visible exceptions, tests, and a reviewable report.
+
+If a command fails:
+
+> Use the exact command, error, environment, and current file state as evidence. Propose the smallest diagnostic step before changing code.
 

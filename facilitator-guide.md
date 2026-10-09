@@ -1,170 +1,152 @@
-# Facilitator Guide
+# Facilitator Guide: Outfitter with Microsoft
 
 ## Before the session
 
-- Open the Copilot app, VS Code, a terminal with Copilot CLI available, and the demonstration repository on GitHub.com.
-- Place the synthetic `weekly-status.csv` and `weekly-notes.txt` files in the demo workspace.
-- Test the full demonstration once from a clean starting point.
-- Keep the final script and expected outputs available as backups.
-- Prepare the opening poll and a visible timer.
+- Open the repository's `demo-workspace/` folder in VS Code.
+- Confirm GitHub Copilot is signed in and Agent Mode is available.
+- Open Explorer, Copilot Chat, and the integrated terminal.
+- Keep source control visible but start with no generated script or outputs.
+- Test the demo from a clean copy and keep completed outputs available as backup.
+- Increase editor, Chat, and terminal font sizes.
+- Use synthetic data only.
 
-## 0:00–0:05 — From installation to intention
+## 0:00–0:07 — VS Code trailhead
 
-**Say:** “Installing Copilot gives you access to a capability, but it does not give you a workflow. Today is about closing that gap.”
+**Say:** “Outfitter is about building capability. Today, our workshop is VS Code, and Agent Mode is our project collaborator.”
 
-Ask for a show of hands or poll:
+Show only the surfaces participants need:
 
-- I was not sure what to ask.
-- I tried it, but the answer was too generic.
-- I did not know which Copilot experience to use.
-- I was unsure whether I could trust the result.
-- I have already found a repeatable use case.
+1. **Explorer:** the project folder and source files.
+2. **Copilot Chat:** where intent and feedback are communicated.
+3. **Agent Mode:** where Copilot can inspect files, edit the project, and use tools.
+4. **Integrated terminal:** where commands, scripts, and tests run.
 
-Frame the audience:
+Clarify the modes:
 
-- Their existing skills and professional judgment are the starting point.
-- Professional developers may use Copilot differently, but software development is not the target of this session.
-- The aim is to reduce friction in everyday knowledge work and scripting.
+- **Ask/Chat:** explanation and focused conversation.
+- **Edit:** targeted changes you direct.
+- **Agent:** a bounded outcome that may require multiple files, commands, and iteration.
 
-## 0:05–0:12 — Where Copilot fits
+Tell newer participants they do not need to memorize shortcuts. Tell experienced participants the value of the demo is the project-level interaction and review pattern, not basic VS Code navigation.
 
-Introduce the five patterns: **Understand, Draft, Transform, Automate, Review**.
+Opening poll:
 
-Use quick examples:
+- I build in VS Code most weeks.
+- I use Copilot Chat but rarely use Agent Mode.
+- I use Agent Mode for multi-file work.
+- I am new to VS Code.
 
-- “Explain this PowerShell script in plain language.”
-- “Draft a checklist from these policy notes.”
-- “Turn these meeting notes into decisions and action items.”
-- “Help me automate this repeated file-processing task.”
-- “Review this result for missing assumptions and edge cases.”
+## 0:07–0:12 — Build the Capability
 
-Then introduce the surface rule:
+Frame the persona:
 
-> Start where the work and its context already live.
+> Outfitter builds dashboards, apps, automation, AI agents, and code. The objective is not more generated text; it is a useful capability that can be run, checked, and shared.
 
-Do not present the surfaces as a maturity ladder. They are different workspaces for different contexts.
+Personal productivity means reducing the friction in a task you own. Small-team productivity means leaving behind enough context, tests, and instructions for someone else to reuse the work.
+
+Briefly position the other tools:
+
+- Use the **Copilot app** when the work begins as broad planning outside a project.
+- Use **Copilot CLI** when the task is predominantly terminal-first.
+- Stay in **VS Code** when the work spans files, code, outputs, and validation.
+
+Do not open separate demos for the app or CLI.
 
 ## 0:12–0:20 — Goal–Context–Constraints–Check
 
-### Weak prompt
+### Weak request
 
-> Make me a script for this report.
+> Build the weekly report.
 
-Ask the audience what Copilot would have to guess.
+Ask what the agent would have to guess: sources, joining rules, risk definitions, output format, safety boundaries, and evidence.
 
-### Improved prompt
+### Stronger request
 
-> **Goal:** Create a PowerShell script that reads `weekly-status.csv`, finds rows with a missing owner or due date, and writes a Markdown summary.  
-> **Context:** The file has the columns `Item`, `Owner`, `DueDate`, and `Status`. This runs manually on Windows once a week.  
-> **Constraints:** Do not modify the source CSV. Use only built-in PowerShell features. Explain the script before showing it.  
-> **Check:** Include a dry-run example and three test cases, including an empty file.
+> **Goal:** Build a repeatable account-health report from the CRM, usage, and prior-week exports.  
+> **Context:** Usage keys do not always match CRM account IDs. An approved alias map is included. The report is reviewed by a five-person team every Friday.  
+> **Constraints:** Never modify source files. Never guess an unmatched account. Use standard Python only. Keep reconciliation rules explicit and readable.  
+> **Check:** Create exception output, add tests for risky rules, run the workflow, and summarize the evidence before calling it complete.
 
-Explain:
+Explain that the **Check** turns a request into an accountable workflow.
 
-- **Goal:** What outcome do you need?
-- **Context:** What does Copilot need to know that it cannot safely assume?
-- **Constraints:** What must it use, avoid, preserve, or limit?
-- **Check:** How will you determine whether the result is correct?
+## 0:20–0:44 — Agent Mode demonstration
 
-Emphasize that a prompt is not a one-time incantation. Good use is a conversation:
+Follow `demo-script.md`.
 
-1. Ask for a plan.
-2. Inspect assumptions.
-3. Request a small first version.
-4. Test it.
-5. Bring errors or observations back.
-6. Ask for refinement.
+Narrate the interaction pattern:
 
-## 0:20–0:36 — Demonstration
+- “First, I want the agent to inspect—not implement.”
+- “I am reviewing its assumptions before authorizing edits.”
+- “The exception file is a feature: uncertainty must remain visible.”
+- “Now the agent is running the work, not merely displaying code.”
+- “Tests and output inspection are the evidence.”
 
-Follow `demo-script.md`. Keep the demonstration moving even if Copilot produces different wording. The teaching target is the interaction pattern, not a predetermined answer.
+Ask the audience at three points:
 
-Narrate these transitions:
+1. After the plan: “What decision is still underspecified?”
+2. Before running: “What could silently make this report wrong?”
+3. After output: “Which result would you spot-check against the sources?”
 
-- Copilot app: “I am shaping the task before touching files.”
-- CLI: “I am working where the files and commands already are.”
-- VS Code: “Now the artifact itself needs focused editing and testing.”
-- GitHub.com: “The result becomes shared, reviewable work.”
+If Agent Mode asks to run a command, read it aloud and explain its impact before approving it.
 
-Pause after the first generated script and ask: “What would you verify before running this?”
+## 0:44–0:51 — Package for a small team
 
-## 0:36–0:45 — More workday use cases
+Ask Agent Mode to add:
 
-Present one example per productivity pattern. Encourage participants to translate the example into their own role.
+- `RUNBOOK.md` with prerequisites, commands, inputs, outputs, and known limitations,
+- `prompts/build-weekly-report.prompt.md` with the reusable task prompt,
+- tests beside the implementation,
+- and a concise handoff summary.
 
-### Understand
+**Say:** “The deliverable is not only the script. The capability is the script plus the prompt, evidence, instructions, and visible exceptions.”
 
-> Explain this error message for a non-developer. List the three most likely causes, what evidence would distinguish them, and the safest first check.
+Show how a teammate can:
 
-### Draft
+1. inspect the runbook,
+2. replace the dated exports,
+3. run the command,
+4. review exceptions,
+5. and verify the Markdown report.
 
-> Turn these rough notes into a concise operating procedure. Preserve every requirement, flag ambiguities, and add a verification checklist.
+This replaces the former GitHub issue step.
 
-### Transform
+## 0:51–0:56 — Trust the evidence
 
-> Convert this unstructured list into a table with owner, due date, dependency, and status. Do not invent missing values; mark them as `Needs input`.
+Use four checks:
 
-### Automate
+1. **Accuracy:** Do joins, calculations, and report claims match the sources?
+2. **Safety:** Are source files immutable? Are outputs written to a separate folder?
+3. **Policy:** Is the data appropriate for Copilot and the chosen storage location?
+4. **Fitness:** Do tests and representative inputs cover real conditions?
 
-> Before writing code, identify which steps in this weekly process are deterministic enough to automate and which still require human judgment.
+Highlight the most important failure mode: a polished report built from silently dropped or incorrectly matched records.
 
-### Review
+## 0:56–1:00 — Q&A and next build
 
-> Review this plan as a skeptical colleague. Find missing assumptions, unclear ownership, failure modes, and claims that need a source.
+Ask participants to choose a task with:
 
-## 0:45–0:51 — Trust and responsible use
+- more than one meaningful step,
+- a recurring or reusable outcome,
+- bounded inputs,
+- a clear verification method,
+- and low enough risk for a first experiment.
 
-Use the phrase:
+Have them record:
 
-> Copilot can accelerate production, but it does not transfer accountability.
-
-Cover four checks:
-
-1. **Accuracy:** Does the result match the source data and task?
-2. **Safety:** Could the command modify, delete, disclose, or overwrite something?
-3. **Policy:** Is the information appropriate to provide under organizational rules?
-4. **Fitness:** Does the result work in the real environment, not only in the example?
-
-For commands and scripts:
-
-- Ask for an explanation.
-- Prefer a dry run or read-only first step.
-- Test on synthetic or copied data.
-- Review file paths and destructive operations.
-- Keep a rollback or backup when the task changes data.
-
-For factual summaries:
-
-- Ask Copilot to distinguish facts, inferences, and unanswered questions.
-- Open and verify cited sources.
-- Do not treat confident language as evidence.
-
-## 0:51–1:00 — Q&A and next action
-
-When answering, map questions back to:
-
-- the productivity pattern,
-- the best surface,
-- the needed context,
-- and the verification method.
-
-Close with a one-week experiment:
-
-> Choose a task you already understand, that takes 15–60 minutes, happens more than once, and has a result you can verify.
-
-Ask participants to record:
-
-- My task:
-- My Copilot surface:
-- Context I will provide:
-- Constraint I will set:
-- How I will check the result:
+- Capability I want to build:
+- Folder or project it belongs in:
+- Context Agent Mode needs:
+- Decisions that remain mine:
+- Evidence I require:
+- What I will share with my team:
 
 ## Facilitation guardrails
 
-- If a demonstration fails, show the error and model how to give it back to Copilot with context.
-- Do not imply that every workflow should be automated.
-- Do not use “AI magic” language; connect outcomes to the quality of context, iteration, and review.
-- Do not let syntax dominate. Explain what the script accomplishes and how the participant verifies it.
-- Do not compare participants to professional developers. Reinforce the value of their existing domain knowledge.
+- Do not turn the orientation into a product tour.
+- Do not let Agent Mode begin implementation before the plan and assumptions are reviewed.
+- Do not imply every ambiguity should be automated; preserve human decision points.
+- Do not hide agent errors. Use the exact error as new context.
+- Do not equate a successful command with a correct business outcome.
+- Do not share sensitive organizational data in the demonstration.
+- Keep the focus on a durable workflow, not on writing Python syntax.
 

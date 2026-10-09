@@ -1,0 +1,7 @@
+account_id,active_users,licensed_users,risk_level
+ACCT-1001,68,100,Watch
+ACCT-1002,42,120,Watch
+ACCT-1003,22,80,High
+ACCT-1004,91,100,Healthy
+ACCT-1005,0,0,High
+ACCT-1006,55,75,Healthy

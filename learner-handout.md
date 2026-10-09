@@ -1,86 +1,80 @@
-# GitHub Copilot for Professional Productivity
+# Outfitter with Microsoft
 
-## Start with work, not a feature
+## Build the Capability
 
-Choose a task you already understand and can verify. Good first tasks are repeated, bounded, and low-risk.
+Use GitHub Copilot in VS Code to turn a bounded work outcome into a workflow that can be run, checked, and shared.
 
-Copilot can help you:
+## VS Code trailhead
 
-- **Understand** unfamiliar material.
-- **Draft** a useful first version.
-- **Transform** information into a better format.
-- **Automate** repeatable steps.
-- **Review** work for gaps and risks.
+- **Explorer:** project files and context
+- **Copilot Chat:** intent, questions, and feedback
+- **Agent Mode:** multi-step work across files and tools
+- **Terminal:** commands, execution, and tests
+
+Use the Copilot app for broad planning outside a project. Use Copilot CLI when the terminal is the main workspace.
 
 ## Goal–Context–Constraints–Check
 
-Use this pattern when you are unsure what to type:
-
 ```text
 Goal:
-What outcome do I need?
+What useful capability or outcome do I need?
 
 Context:
-What does Copilot need to know about the source, audience, environment, or workflow?
+What sources, environment, audience, and workflow must Copilot understand?
 
 Constraints:
-What must it use, avoid, preserve, or limit?
+What must remain unchanged? What rules and tools must it follow?
 
 Check:
-How will I verify that the result is correct and safe?
+What outputs, exceptions, tests, and source checks will prove the result?
 ```
 
-## Example
+## Agent Mode workflow
+
+1. **Inspect** the workspace without changing it.
+2. **Plan** the files, logic, evidence, and decision boundaries.
+3. **Build** the smallest complete version.
+4. **Run** the workflow and inspect actual outputs.
+5. **Review** assumptions and silent failure modes.
+6. **Refine** only justified changes.
+7. **Package** the prompt, runbook, tests, and outputs for the team.
+
+## Strong example
 
 ```text
-Goal: Create a script that identifies incomplete rows in a weekly CSV
-and writes a Markdown summary.
+Goal: Build a repeatable account-health report from CRM, usage, and
+prior-week exports.
 
-Context: The columns are Item, Owner, DueDate, and Status. I run this
-manually on Windows every Friday.
+Context: Usage keys do not always match CRM account IDs. Use the included
+approved alias map. A five-person team reviews the report every Friday.
 
-Constraints: Do not modify the CSV. Use built-in PowerShell features.
-Explain the approach before showing code.
+Constraints: Never modify source files. Never guess an unmatched account.
+Use standard Python only. Keep reconciliation rules explicit.
 
-Check: Include a dry-run example and tests for valid, incomplete, and
-empty input files.
+Check: Preserve exceptions, add tests for risky rules, run the workflow,
+and trace report claims back to source data.
 ```
 
-## Choose the surface
+## Verification checklist
 
-| If the work is… | Start with… |
-|---|---|
-| Broad, ambiguous, or spread across tasks | Copilot app |
-| In commands, files, or a terminal workflow | Copilot CLI |
-| In scripts, configuration, or structured text | VS Code |
-| In an issue, pull request, or repository | GitHub.com |
+- **Accuracy:** Are joins, calculations, and report claims supported by source records?
+- **Safety:** Are source files immutable and outputs written separately?
+- **Policy:** Is the information appropriate for Copilot and the storage location?
+- **Fitness:** Do tests and representative inputs cover real conditions?
+- **Transparency:** Are unmatched and ambiguous records visible?
+- **Reuse:** Can a teammate run the workflow from the documentation?
 
-## Make it a conversation
+## My next capability
 
-1. Ask for a plan.
-2. Inspect assumptions.
-3. Request a small first version.
-4. Test or verify it.
-5. Share the exact result or error.
-6. Refine only what needs improvement.
+**Capability I want to build:**  
 
-## Verify before use
+**Folder or project it belongs in:**  
 
-- Does it match the source and intended outcome?
-- Could it modify, overwrite, delete, or disclose anything?
-- Is the information appropriate to share under organizational policy?
-- Did you test it in the real environment or with representative data?
-- For factual claims, did you open and verify the source?
+**Context Agent Mode needs:**  
 
-## My one-week experiment
+**Decisions that remain mine:**  
 
-**Task:**  
+**Evidence I require:**  
 
-**Copilot surface:**  
-
-**Context I will provide:**  
-
-**Constraint I will set:**  
-
-**How I will check the result:**  
+**What I will share with my team:**  
 

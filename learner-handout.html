@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Interactive learner handout for GitHub Copilot for Professional Productivity.">
-  <title>Learner Handout · GitHub Copilot for Professional Productivity</title>
+  <meta name="description" content="Outfitter with Microsoft learner handout for building capability with GitHub Copilot and VS Code.">
+  <title>Learner Handout · Outfitter with Microsoft</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="handout.css">
 </head>
@@ -12,7 +12,7 @@
   <header class="site-header handout-nav">
     <a class="brand" href="index.html">
       <span class="brand-mark">✦</span>
-      <span>Professional Productivity</span>
+      <span>Outfitter with Microsoft</span>
     </a>
     <div class="handout-actions">
       <a href="index.html">Training site</a>
@@ -24,8 +24,8 @@
     <section class="handout-hero">
       <div class="handout-hero-copy">
         <div class="eyebrow">Learner field guide</div>
-        <h1>Turn a real task into a useful Copilot conversation.</h1>
-        <p>Use this guide during the session, then keep it nearby for your first week of practice.</p>
+        <h1>Build the capability to turn real work into a useful Copilot workflow.</h1>
+        <p>Use this guide during the session, then keep it nearby for your first week of practice in VS Code and agent mode.</p>
       </div>
       <div class="hero-stamp" aria-label="Four step framework">
         <span>Goal</span>
@@ -45,17 +45,17 @@
           <label class="help-card">
             <input type="checkbox">
             <span class="help-icon">?</span>
-            <span><strong>Understand</strong><small>Explain unfamiliar material, code, or errors.</small></span>
+            <span><strong>Understand</strong><small>Explain unfamiliar data, scripts, or errors.</small></span>
           </label>
           <label class="help-card">
             <input type="checkbox">
             <span class="help-icon">✎</span>
-            <span><strong>Draft</strong><small>Create a useful first version.</small></span>
+            <span><strong>Build</strong><small>Create a dashboard, app, automation, agent, or script.</small></span>
           </label>
           <label class="help-card">
             <input type="checkbox">
             <span class="help-icon">⇄</span>
-            <span><strong>Transform</strong><small>Restructure or simplify information.</small></span>
+            <span><strong>Transform</strong><small>Clean, normalize, or reconcile information.</small></span>
           </label>
           <label class="help-card">
             <input type="checkbox">
@@ -65,7 +65,7 @@
           <label class="help-card">
             <input type="checkbox">
             <span class="help-icon">✓</span>
-            <span><strong>Review</strong><small>Find gaps, risks, and edge cases.</small></span>
+            <span><strong>Review + Share</strong><small>Prove the result and enable team reuse.</small></span>
           </label>
         </div>
       </div>
@@ -87,7 +87,7 @@
             <div class="framework-letter">C</div>
             <h3>Context</h3>
             <p>What does Copilot need to know?</p>
-            <textarea data-save="framework-context" aria-label="Context notes" placeholder="The source, audience, environment…"></textarea>
+            <textarea data-save="framework-context" aria-label="Context notes" placeholder="The source, audience, environment, and workflow…"></textarea>
           </article>
           <article>
             <div class="framework-letter">C</div>
@@ -111,10 +111,10 @@
         <div class="eyebrow">Worked example</div>
         <h2>Give Copilot less to guess.</h2>
         <div class="example-prompt">
-          <p><strong>Goal</strong> Create a script that identifies incomplete rows in a weekly CSV and writes a Markdown summary.</p>
-          <p><strong>Context</strong> The columns are Item, Owner, DueDate, and Status. I run this manually on Windows every Friday.</p>
-          <p><strong>Constraints</strong> Do not modify the CSV. Use built-in PowerShell features. Explain the approach before showing code.</p>
-          <p><strong>Check</strong> Include a dry-run example and tests for valid, incomplete, and empty input files.</p>
+          <p><strong>Goal</strong> Build a repeatable account-health report from CRM, usage, and prior-week exports.</p>
+          <p><strong>Context</strong> Usage keys may require an approved alias map. A five-person team reviews the report every Friday.</p>
+          <p><strong>Constraints</strong> Never modify source files or guess an unmatched account. Use standard Python and explicit rules.</p>
+          <p><strong>Check</strong> Preserve exceptions, test risky rules, run the workflow, and trace report claims to source data.</p>
         </div>
         <div class="tip">
           <span>Tip</span>
@@ -129,10 +129,10 @@
         <div class="eyebrow">Choose the surface</div>
         <h2>Where does the work already live?</h2>
         <div class="surface-map">
-          <article><div class="map-icon">◈</div><div><h3>Copilot app</h3><p>Broad, ambiguous, or spread across tasks</p></div></article>
-          <article><div class="map-icon">›_</div><div><h3>Copilot CLI</h3><p>Commands, files, or a terminal workflow</p></div></article>
-          <article><div class="map-icon">{ }</div><div><h3>VS Code</h3><p>Scripts, configuration, or structured text</p></div></article>
-          <article><div class="map-icon">◉</div><div><h3>GitHub.com</h3><p>Issues, pull requests, or repository work</p></div></article>
+          <article><div class="map-icon">{ }</div><div><h3>VS Code + Agent Mode</h3><p>Multi-file implementation, commands, tests, and documentation</p></div></article>
+          <article><div class="map-icon">⌕</div><div><h3>Copilot Chat</h3><p>Explanation, design conversation, and focused edits</p></div></article>
+          <article><div class="map-icon">◈</div><div><h3>Copilot app</h3><p>Broad planning before the work becomes a project</p></div></article>
+          <article><div class="map-icon">›_</div><div><h3>Copilot CLI</h3><p>Command-first tasks where the terminal is home</p></div></article>
         </div>
       </div>
     </section>
@@ -143,12 +143,12 @@
         <div class="eyebrow">Iterate</div>
         <h2>Make it a conversation.</h2>
         <ol class="conversation-path">
-          <li><span>1</span><div><strong>Ask for a plan</strong><p>Understand the proposed approach before creating anything.</p></div></li>
-          <li><span>2</span><div><strong>Inspect assumptions</strong><p>Find what Copilot guessed and correct what matters.</p></div></li>
-          <li><span>3</span><div><strong>Request a small first version</strong><p>Reduce risk and make the result easier to review.</p></div></li>
-          <li><span>4</span><div><strong>Test or verify it</strong><p>Use representative inputs, sources, or observable criteria.</p></div></li>
-          <li><span>5</span><div><strong>Share the exact result or error</strong><p>Specific evidence produces better troubleshooting.</p></div></li>
-          <li><span>6</span><div><strong>Refine what needs improvement</strong><p>Keep useful work and change only what is necessary.</p></div></li>
+          <li><span>1</span><div><strong>Inspect</strong><p>Read the workspace and expose assumptions before editing.</p></div></li>
+          <li><span>2</span><div><strong>Plan</strong><p>Agree on files, rules, evidence, and decision boundaries.</p></div></li>
+          <li><span>3</span><div><strong>Build</strong><p>Create the smallest complete end-to-end version.</p></div></li>
+          <li><span>4</span><div><strong>Run</strong><p>Execute the workflow and inspect actual outputs.</p></div></li>
+          <li><span>5</span><div><strong>Review and refine</strong><p>Find silent failures and apply only justified changes.</p></div></li>
+          <li><span>6</span><div><strong>Package</strong><p>Leave a prompt, runbook, tests, outputs, and limitations.</p></div></li>
         </ol>
       </div>
     </section>
@@ -159,10 +159,10 @@
         <div class="eyebrow">Before you use or share it</div>
         <h2>Run the four-part verification check.</h2>
         <div class="verify-grid">
-          <label><input type="checkbox"><span><strong>Accuracy</strong>Does it match the source and intended outcome?</span></label>
-          <label><input type="checkbox"><span><strong>Safety</strong>Could it modify, overwrite, delete, or disclose anything?</span></label>
-          <label><input type="checkbox"><span><strong>Policy</strong>Is the information appropriate to provide and share?</span></label>
-          <label><input type="checkbox"><span><strong>Fitness</strong>Did you test it in the real environment or with representative data?</span></label>
+          <label><input type="checkbox"><span><strong>Accuracy</strong>Can joins, calculations, and claims be traced to sources?</span></label>
+          <label><input type="checkbox"><span><strong>Safety</strong>Are source files immutable and outputs separate?</span></label>
+          <label><input type="checkbox"><span><strong>Policy</strong>Is the data appropriate for Copilot and this storage location?</span></label>
+          <label><input type="checkbox"><span><strong>Fitness</strong>Do tests, exceptions, and representative inputs cover reality?</span></label>
         </div>
         <p class="evidence-note">Confident language is not evidence. Open sources, inspect commands, and test results.</p>
       </div>
@@ -173,11 +173,11 @@
       <h2>Turn one useful idea into practice.</h2>
       <p>Choose a task that takes 15–60 minutes, happens more than once, and has a result you can verify.</p>
       <div class="workbook-fields">
-        <label><span>My task</span><textarea data-save="experiment-task" placeholder="The work I want to accelerate is…"></textarea></label>
-        <label><span>My Copilot surface</span><input data-save="experiment-surface" type="text" placeholder="Copilot app, CLI, VS Code, or GitHub.com"></label>
-        <label><span>Context I will provide</span><textarea data-save="experiment-context" placeholder="Copilot needs to know…"></textarea></label>
-        <label><span>Constraint I will set</span><textarea data-save="experiment-constraint" placeholder="The result must… / must not…"></textarea></label>
-        <label><span>How I will check the result</span><textarea data-save="experiment-check" placeholder="I will verify it by…"></textarea></label>
+        <label><span>Capability I want to build</span><textarea data-save="experiment-task" placeholder="The repeatable outcome I want is…"></textarea></label>
+        <label><span>Folder or project</span><input data-save="experiment-surface" type="text" placeholder="Where the files and context already live"></label>
+        <label><span>Decisions that remain mine</span><textarea data-save="experiment-context" placeholder="Agent Mode must not guess…"></textarea></label>
+        <label><span>Evidence I require</span><textarea data-save="experiment-constraint" placeholder="Tests, exceptions, source checks, review criteria…"></textarea></label>
+        <label><span>What I will share with my team</span><textarea data-save="experiment-check" placeholder="Script, prompt, runbook, outputs, limitations…"></textarea></label>
       </div>
       <div class="commitment">
         <label><input type="checkbox"> I will try this task within the next seven days.</label>
@@ -187,7 +187,7 @@
   </main>
 
   <footer class="site-footer handout-footer">
-    <span>GitHub Copilot for Professional Productivity</span>
+    <span>Outfitter with Microsoft · Build the Capability</span>
     <span><a href="index.html">Training site</a> · <a href="learner-handout.md">Plain-text version</a></span>
   </footer>
 

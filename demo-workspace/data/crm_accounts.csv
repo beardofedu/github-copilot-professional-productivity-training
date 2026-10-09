@@ -1,0 +1,7 @@
+account_id,account_name,owner_email,region,renewal_date,status
+ACCT-1001,Northwind Health,avery@example.com,West,2026-11-15,Active
+ACCT-1002,Contoso Energy,jordan@example.com,Central,2027-02-28,Active
+ACCT-1003,Fabrikam Retail,,East,2026-12-20,Active
+ACCT-1004,Adventure Works,sam@example.com,West,2027-06-30,Active
+ACCT-1005,Tailspin Education,lee@example.com,North,2026-10-31,Active
+ACCT-1006,Woodgrove Bank,morgan@example.com,East,2027-04-15,Active
