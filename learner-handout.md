@@ -78,3 +78,16 @@ and trace report claims back to source data.
 
 **What I will share with my team:**  
 
+## Keep building
+
+All remote-accessible — no travel required. Pick one and pair it with the capability above.
+
+| Event | When | Link |
+|---|---|---|
+| GitHub Universe 2026 — free virtual pass | October 28–29, 2026 | <https://githubuniverse.com> |
+| Microsoft Ignite 2026 — free digital pass | November 17–20, 2026 | <https://ignite.microsoft.com> |
+| Microsoft Reactor — GitHub Copilot series | Recurring live sessions | <https://developer.microsoft.com/reactor> |
+| GitHub events and webinars | Ongoing | <https://github.com/resources/events> |
+
+**Event I am registering for:**  
+

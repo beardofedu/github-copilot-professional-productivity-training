@@ -23,3 +23,14 @@ The demo uses VS Code and Copilot Agent Mode to reconcile CRM, product-usage, al
 
 All included data is synthetic.
 
+## Keep building
+
+The session closes with remote-accessible, free-to-attend-online events so participants can continue after the hour:
+
+- [GitHub Universe 2026](https://githubuniverse.com) — October 28–29, 2026, free virtual pass
+- [Microsoft Ignite 2026](https://ignite.microsoft.com) — November 17–20, 2026, free digital pass
+- [Microsoft Reactor](https://developer.microsoft.com/reactor) — recurring live GitHub Copilot classes
+- [GitHub events and webinars](https://github.com/resources/events) — ongoing calendar and recordings
+
+Confirm dates and registration links before each delivery; schedules change.
+

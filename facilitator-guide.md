@@ -9,6 +9,7 @@
 - Test the demo from a clean copy and keep completed outputs available as backup.
 - Increase editor, Chat, and terminal font sizes.
 - Use synthetic data only.
+- Check the four events in the closing segment are still upcoming and that registration links work; update the slide and handout if a date has passed.
 
 ## 0:00–0:07 — VS Code trailhead
 
@@ -110,7 +111,7 @@ Show how a teammate can:
 
 This replaces the former GitHub issue step.
 
-## 0:51–0:56 — Trust the evidence
+## 0:51–0:55 — Trust the evidence
 
 Use four checks:
 
@@ -121,7 +122,24 @@ Use four checks:
 
 Highlight the most important failure mode: a polished report built from silently dropped or incorrectly matched records.
 
-## 0:56–1:00 — Q&A and next build
+## 0:55–0:58 — Keep building
+
+Close the capability loop before Q&A. Every option here is remote-accessible, so nobody needs to travel.
+
+| Event | When | Why it fits | Link |
+|---|---|---|---|
+| GitHub Universe 2026 | October 28–29, 2026 | Free virtual pass. Keynotes and sessions on Copilot, Agent Mode, and agentic workflows, available on demand afterward. | <https://githubuniverse.com> |
+| Microsoft Ignite 2026 | November 17–20, 2026 | Free digital pass. Copilot, agents, and the broader Microsoft tooling these capabilities connect to. | <https://ignite.microsoft.com> |
+| Microsoft Reactor — GitHub Copilot series | Recurring live sessions | Short, free, hands-on classes on Copilot Chat, Agent Mode, and MCP in VS Code. | <https://developer.microsoft.com/reactor> |
+| GitHub events and webinars | Ongoing | Upcoming webinars plus on-demand recordings. | <https://github.com/resources/events> |
+
+Say it this way:
+
+> Pick one of these and pair it with the capability you are about to write down. Register before you leave the room — a session you attend with a specific build in mind is worth far more than one you attend out of general interest.
+
+Confirm dates and registration links the week you deliver; schedules change. If a date has passed, point to the on-demand recordings instead.
+
+## 0:58–1:00 — Q&A and next build
 
 Ask participants to choose a task with:
 

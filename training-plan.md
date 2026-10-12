@@ -40,8 +40,9 @@ The session assumes mixed experience. Some attendees already build sophisticated
 | 0:12–0:20 | Frame the outcome | Teach Goal–Context–Constraints–Check using the recurring-report scenario. |
 | 0:20–0:44 | Agent Mode demonstration | Inspect, reconcile, automate, test, and review a multi-source weekly report. |
 | 0:44–0:51 | Package for the team | Create a runbook and reusable prompt; explain repo/shared-folder handoff. |
-| 0:51–0:56 | Trust the evidence | Review exceptions, tests, source checks, safety, and policy. |
-| 0:56–1:00 | Q&A and next build | Select one bounded capability to build in the next week. |
+| 0:51–0:55 | Trust the evidence | Review exceptions, tests, source checks, safety, and policy. |
+| 0:55–0:58 | Keep building | Point to remote-accessible GitHub and Microsoft events that extend the session. |
+| 0:58–1:00 | Q&A and next build | Select one bounded capability to build in the next week. |
 
 More than half of the instructional time is spent in VS Code. The Copilot app and CLI are covered as short decision points, not as separate demo stages.
 
@@ -101,6 +102,19 @@ This is deliberately more advanced than parsing one CSV. It demonstrates project
 - **Demo check:** Participants identify which reconciliation decisions must remain explicit and reviewable.
 - **Exit commitment:** Participants name one capability they will build, the evidence they will require, and what they will share with their team.
 
+## Keep building — closing segment
+
+The session ends with a concrete way to continue. Every option is remote-accessible, so no travel is required.
+
+| Event | When | Why it fits Outfitter | Link |
+|---|---|---|---|
+| GitHub Universe 2026 | October 28–29, 2026 | Free virtual pass covering Copilot, Agent Mode, and agentic workflows, with sessions available on demand afterward. | <https://githubuniverse.com> |
+| Microsoft Ignite 2026 | November 17–20, 2026 | Free digital pass spanning Copilot, agents, and the wider Microsoft tooling these capabilities connect to. | <https://ignite.microsoft.com> |
+| Microsoft Reactor — GitHub Copilot series | Recurring live sessions | Short, free, hands-on classes on Copilot Chat, Agent Mode, and MCP in VS Code. | <https://developer.microsoft.com/reactor> |
+| GitHub events and webinars | Ongoing | Upcoming webinars plus on-demand recordings for continued practice. | <https://github.com/resources/events> |
+
+Pair each event with the capability the participant just committed to, so attendance has a purpose beyond general interest.
+
 ## Delivery requirements
 
 - Start from the included `demo-workspace/` folder.
@@ -111,6 +125,7 @@ This is deliberately more advanced than parsing one CSV. It demonstrates project
 - Keep a completed backup branch or folder ready, but demonstrate from the starter workspace.
 - If the live result differs, teach from the difference instead of hiding it.
 - Keep Copilot app and CLI coverage to approximately three minutes total.
+- Confirm event dates and registration links the week of delivery; schedules change.
 
 ## Success measures
 

@@ -83,7 +83,7 @@
 .framework-grid article { background: var(--white); border-top: 4px solid var(--teal-bright); box-shadow: var(--shadow); padding: 1.5rem; }
 .framework-letter { align-items: center; background: var(--dark); border-radius: 50%; color: var(--white); display: flex; font-size: .9rem; font-weight: 900; height: 2.4rem; justify-content: center; width: 2.4rem; }
 .framework-grid h3 { color: var(--teal); font-size: 1.25rem; margin-top: 1rem; }
-.framework-grid textarea, .workbook-fields textarea, .workbook-fields input {
+.framework-grid textarea, .workbook-fields textarea, .workbook-fields input, .event-pick input {
   background: #f8fbfa;
   border: 1px solid var(--line);
   border-radius: .45rem;
@@ -95,7 +95,10 @@
   width: 100%;
 }
 .framework-grid textarea { min-height: 110px; }
-textarea:focus, .workbook-fields input:focus { border-color: var(--teal-bright); box-shadow: 0 0 0 3px rgba(21,163,163,.12); }
+textarea:focus, .workbook-fields input:focus, .event-pick input:focus { border-color: var(--teal-bright); box-shadow: 0 0 0 3px rgba(21,163,163,.12); }
+.events-section .events-grid { margin-top: 2rem; }
+.event-pick { display: block; margin-top: 2rem; max-width: 520px; }
+.event-pick > span { color: var(--dark); display: block; font-weight: 800; margin-bottom: .45rem; }
 .example-prompt { background: var(--dark); border-radius: .8rem; color: var(--white); margin-top: 2rem; padding: 2rem; }
 .example-prompt p { color: #dff7f3; margin: 0; padding: .8rem 0; }
 .example-prompt p + p { border-top: 1px solid rgba(201,244,238,.2); }
@@ -143,7 +146,7 @@ textarea:focus, .workbook-fields input:focus { border-color: var(--teal-bright);
 @media (max-width: 600px) {
   .handout-actions a { display: none; }
   .print-button { font-size: .8rem; }
-  .framework-grid, .surface-map, .verify-grid, .help-grid { grid-template-columns: 1fr; }
+  .framework-grid, .surface-map, .verify-grid, .help-grid, .events-grid { grid-template-columns: 1fr; }
   .commitment { align-items: flex-start; flex-direction: column; }
 }
 @media print {
@@ -169,4 +172,9 @@ textarea:focus, .workbook-fields input:focus { border-color: var(--teal-bright);
   .experiment-workbook { border-radius: 0; break-before: page; padding: .4in; }
   .workbook-fields { box-shadow: none; margin: .2in auto; padding: .15in; }
   .workbook-fields textarea { min-height: .55in; }
+  .events-section { break-before: page; }
+  .events-grid { gap: .1in; margin-top: .15in; }
+  .event-card { box-shadow: none; padding: .12in; }
+  .event-card h3 { font-size: 11pt; margin: .06in 0 .04in; }
+  .event-pick input { min-height: .3in; }
 }
