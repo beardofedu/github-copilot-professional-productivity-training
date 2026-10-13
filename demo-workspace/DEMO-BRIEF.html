@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Starter brief for the weekly account health demo in the Outfitter with Microsoft training.">
+  <title>Starter Demo Brief · Outfitter with Microsoft</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../demo-pages.css">
+</head>
+<body class="demo-page">
+  <div class="demo-shell">
+    <header class="demo-header" aria-label="Main navigation">
+      <a class="brand" href="../index.html" aria-label="Outfitter with Microsoft home">
+        <span class="brand-mark">✦</span>
+        <span>Outfitter with Microsoft</span>
+      </a>
+      <nav>
+        <a href="../index.html">Training site</a>
+        <a href="../demo-script.html">Demo script</a>
+        <a href="DEMO-BRIEF.md">Markdown source</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="demo-hero">
+        <div class="demo-hero-inner">
+          <div class="demo-kicker">Starter demo brief</div>
+          <h1>Build the weekly account-health workflow.</h1>
+          <p>Resolve CRM records, product usage, and last week's status into a reviewed report with visible exceptions instead of silent assumptions.</p>
+          <div class="demo-hero-actions">
+            <a class="button button-primary" href="#brief">Read the brief</a>
+            <a class="button button-secondary" href="../demo-script.html">Open the demo script</a>
+          </div>
+        </div>
+      </section>
+
+      <div class="demo-page-grid">
+        <article class="article-panel" id="brief">
+          <section>
+            <div class="badge">Objective</div>
+            <h2>Weekly Account Health Report</h2>
+            <p>Build a repeatable workflow that reconciles CRM accounts with product usage and the prior week’s results.</p>
+          </section>
+
+          <section>
+            <h2>Inputs</h2>
+            <ul>
+              <li><span class="inline-code">data/crm_accounts.csv</span> is the source of truth for account identity, ownership, region, and renewal date.</li>
+              <li><span class="inline-code">data/product_usage.csv</span> contains current usage. Its <span class="inline-code">account_key</span> may be a CRM account ID or an approved alias.</li>
+              <li><span class="inline-code">data/prior_week.csv</span> contains last week’s active-user count and risk level.</li>
+              <li><span class="inline-code">data/account_aliases.json</span> is the only approved fallback for resolving a non-CRM usage key.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Required outputs</h2>
+            <ul>
+              <li><span class="inline-code">output/reconciled_accounts.csv</span></li>
+              <li><span class="inline-code">output/exceptions.csv</span></li>
+              <li><span class="inline-code">output/weekly-account-health.md</span></li>
+            </ul>
+            <p>The desired capability also includes a repeatable Python workflow, automated tests, a runbook, and an agent prompt for future export runs.</p>
+          </section>
+
+          <section>
+            <h2>Rules</h2>
+            <ul>
+              <li>Never modify files under <span class="inline-code">data/</span>.</li>
+              <li>Match usage by exact account ID first, then by the approved alias map.</li>
+              <li>Never guess an account match.</li>
+              <li>Adoption percentage is <span class="inline-code">active_users / licensed_users * 100</span>.</li>
+              <li>If licensed users are zero, adoption is unavailable and the record requires review.</li>
+              <li>Week-over-week change is current active users minus prior active users.</li>
+              <li>Flag an account when any of these are true: owner email is blank, adoption is below 40%, last activity is more than 30 days before the report date, renewal is within 90 days, or reconciliation is incomplete.</li>
+              <li>Use <span class="inline-code">2026-10-09</span> as the report date so the demo is deterministic.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Quality expectations</h2>
+            <div class="card-grid">
+              <article>
+                <h4>Visible exceptions</h4>
+                <p>Unmatched and invalid records must remain visible in the exception output instead of being silently dropped.</p>
+              </article>
+              <article>
+                <h4>Evidence first</h4>
+                <p>The Markdown report must distinguish facts, rule-based flags, and unresolved exceptions.</p>
+              </article>
+              <article>
+                <h4>High-risk behavior</h4>
+                <p>Add automated tests for reconciliation and calculation rules that could create a plausible but wrong result.</p>
+              </article>
+              <article>
+                <h4>Standard Python only</h4>
+                <p>Use the simplest reliable implementation that works for the demo and future reuse.</p>
+              </article>
+            </div>
+          </section>
+        </article>
+
+        <aside class="sidebar-panel" aria-label="Demo brief summary">
+          <h3>At a glance</h3>
+          <ul class="toc">
+            <li><a href="#brief">Brief goal</a></li>
+            <li><a href="#brief">Inputs</a></li>
+            <li><a href="#brief">Rules</a></li>
+            <li><a href="#brief">Output expectations</a></li>
+          </ul>
+
+          <div class="callout-panel">
+            <h3>Common risk</h3>
+            <p>Do not guess a match when record identity is incomplete. Preserve that record as an exception and make the uncertainty visible.</p>
+          </div>
+        </aside>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

@@ -10,8 +10,8 @@ The session focuses on personal and small-team productivity. Participants use Co
 
 - [Training plan](training-plan.md)
 - [Facilitator guide](facilitator-guide.md)
-- [Demonstration script](demo-script.md)
-- [Starter demo workspace](demo-workspace/DEMO-BRIEF.md)
+- [Demonstration script](demo-script.html)
+- [Starter demo workspace](demo-workspace/DEMO-BRIEF.html)
 - [Visual learner handout](learner-handout.html)
 - [Plain-text learner handout](learner-handout.md)
 - [Presentation](outfitter-with-microsoft.pptx)

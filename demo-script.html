@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Demonstration script for the Outfitter with Microsoft training: multi-source report workflow in GitHub Copilot Agent Mode.">
+  <title>Demonstration Script · Outfitter with Microsoft</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="demo-pages.css">
+</head>
+<body class="demo-page">
+  <div class="demo-shell">
+    <header class="demo-header" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="Outfitter with Microsoft home">
+        <span class="brand-mark">✦</span>
+        <span>Outfitter with Microsoft</span>
+      </a>
+      <nav>
+        <a href="index.html">Training site</a>
+        <a href="demo-workspace/DEMO-BRIEF.html">Starter brief</a>
+        <a href="demo-script.md">Markdown source</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="demo-hero">
+        <div class="demo-hero-inner">
+          <div class="demo-kicker">Demonstration script</div>
+          <h1>Multi-source report in Agent Mode.</h1>
+          <p>A repeatable workflow that turns noisy inputs into a reviewed account-health report without hiding unresolved records.</p>
+          <div class="demo-hero-actions">
+            <a class="button button-primary" href="#overview">Read the flow</a>
+            <a class="button button-secondary" href="demo-workspace/DEMO-BRIEF.html">Open the starter brief</a>
+          </div>
+        </div>
+      </section>
+
+      <div class="demo-page-grid">
+        <article class="article-panel" id="overview">
+          <section>
+            <div class="badge">Scenario</div>
+            <h2>Weekly account health, with explicit exceptions</h2>
+            <p>A five-person team produces a weekly account-health report by manually joining CRM exports, product usage, the prior week, and exception handling. The session turns that sequence into a reviewable workflow that respects uncertainty instead of guessing.</p>
+            <div class="metric-grid">
+              <div class="stat"><strong>Inputs</strong> CRM, usage, alias map, prior-week values</div>
+              <div class="stat"><strong>Outputs</strong> reconciled CSV, exceptions, executive summary</div>
+            </div>
+          </section>
+
+          <section>
+            <h2>1. Orient the room</h2>
+            <p>Open the <span class="inline-code">demo-workspace/</span> folder in VS Code and point the room to:</p>
+            <ul>
+              <li>the Explorer and input files,</li>
+              <li>Copilot Chat,</li>
+              <li>the Agent Mode selector, and</li>
+              <li>the integrated terminal.</li>
+            </ul>
+            <p>Keep the walkthrough tight: the opening orientation should take no more than seven minutes, including the poll.</p>
+          </section>
+
+          <section>
+            <h2>2. Ask Agent Mode to inspect before building</h2>
+            <blockquote>
+              Inspect this workspace and read <span class="inline-code">DEMO-BRIEF.md</span> plus every file under <span class="inline-code">data/</span>. Do not create or modify files yet. Report the relationships between the sources, data-quality and reconciliation risks, decisions that cannot be made safely from the files, the proposed output contract, and an implementation and validation plan. Treat unmatched records as visible exceptions. Do not invent mappings.
+            </blockquote>
+            <p>Pause and review the plan. Then ask the room:</p>
+            <blockquote>Which assumption would be most dangerous if the agent got it wrong?</blockquote>
+            <p>If needed, clarify the safety rule:</p>
+            <blockquote>Use exact <span class="inline-code">account_id</span> matches first. Use only mappings explicitly present in <span class="inline-code">account_aliases.json</span> as the fallback. Everything else must go to the exception output.</blockquote>
+          </section>
+
+          <section>
+            <h2>3. Build the smallest end-to-end workflow</h2>
+            <blockquote>
+              Implement the smallest complete version of the workflow described in <span class="inline-code">DEMO-BRIEF.md</span>. Requirements: use standard Python only, keep source files unchanged, resolve usage records by exact account ID and then the approved alias map, write unresolved or invalid records to <span class="inline-code">output/exceptions.csv</span>, calculate adoption percentage and week-over-week active-user change, apply the documented risk rules, write reconciled detail to <span class="inline-code">output/reconciled_accounts.csv</span>, write an executive-friendly Markdown report, and fail clearly when required files or columns are missing. Before editing, restate the files you plan to create and the validation you will run. Then implement, run the workflow, and summarize the actual outputs.
+            </blockquote>
+            <p>When Agent Mode proposes terminal commands, read them before approval. After the run, inspect the terminal output, the exception file, a few rows of the reconciled CSV, and the report claims in the markdown output.</p>
+          </section>
+
+          <section>
+            <h2>4. Add tests where failure matters</h2>
+            <blockquote>
+              Identify the four behaviors most likely to produce a plausible but incorrect report. Add focused automated tests for them using Python's standard <span class="inline-code">unittest</span> library. At minimum cover an approved alias resolving to the correct CRM account, an unknown key remaining unmatched, zero licensed users not causing a divide-by-zero error, and a missing owner triggering the expected risk flag. Run the tests and report the result. Do not weaken business rules merely to make a test pass.
+            </blockquote>
+            <p>Ask, “What important behavior is still not proven by these tests?”</p>
+          </section>
+
+          <section>
+            <h2>5. Review the work as a skeptical teammate</h2>
+            <blockquote>
+              Review the implementation and generated outputs as a skeptical teammate. Look specifically for silent record loss, incorrect joins, non-deterministic output, date assumptions, misleading report language, hard-coded values that should be configuration, and instructions a teammate would need. Rank findings by impact. Do not edit yet.
+            </blockquote>
+            <p>Then direct a bounded refinement:</p>
+            <blockquote>Apply the high-impact fixes only. Re-run the tests and workflow, then show which outputs changed and why.</blockquote>
+          </section>
+
+          <section>
+            <h2>6. Package the capability for a small team</h2>
+            <blockquote>
+              Package this workflow for a teammate. Create <span class="inline-code">RUNBOOK.md</span> with purpose, prerequisites, input contracts, the run command, outputs, review steps, and known limitations; <span class="inline-code">prompts/build-weekly-report.prompt.md</span> with a reusable Agent Mode prompt for next week’s exports; and a concise handoff summary explaining what is automated, what remains human judgment, what exceptions require review, and how the result was validated. Keep the documentation short enough that a teammate will actually use it.
+            </blockquote>
+            <p>The final project structure becomes the reviewable handoff: implementation, prompt, runbook, tests, output, and exception handling in a single project folder.</p>
+          </section>
+
+          <section>
+            <h2>Brief positioning of the other tools</h2>
+            <div class="two-col">
+              <div>
+                <h4>Copilot app</h4>
+                <p>Best when the work begins as cross-project planning or a broad brief.</p>
+              </div>
+              <div>
+                <h4>Copilot CLI</h4>
+                <p>Best when the work is command-first and the terminal is the primary workspace.</p>
+              </div>
+            </div>
+            <p>VS Code + Agent Mode remains the strongest fit here because the task spans multiple data files, implementation, execution, tests, documentation, and review.</p>
+          </section>
+
+          <section>
+            <h2>Recovery prompts</h2>
+            <div class="card-grid">
+              <article>
+                <h4>If Agent Mode starts coding too early</h4>
+                <p>“Stop editing. Return to inspection and list the assumptions that would affect reconciliation or report accuracy.”</p>
+              </article>
+              <article>
+                <h4>If it guesses a match</h4>
+                <p>“Remove inferred mappings that are not explicitly supported by an exact ID or the approved alias file. Preserve those records as exceptions.”</p>
+              </article>
+              <article>
+                <h4>If it produces a polished claim with no trace</h4>
+                <p>“Trace each number in the report to the source rows and calculation that support it. Mark anything not supported as an open question.”</p>
+              </article>
+              <article>
+                <h4>If the implementation becomes too complex</h4>
+                <p>“Reduce this to the smallest end-to-end workflow that preserves explicit reconciliation, visible exceptions, tests, and a reviewable report.”</p>
+              </article>
+            </div>
+          </section>
+        </article>
+
+        <aside class="sidebar-panel" aria-label="Document outline">
+          <h3>Quick outline</h3>
+          <ul class="toc">
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#overview">1. Orient the room</a></li>
+            <li><a href="#overview">2. Inspect before build</a></li>
+            <li><a href="#overview">3. Smallest workflow</a></li>
+            <li><a href="#overview">4. Add tests</a></li>
+            <li><a href="#overview">5. Skeptical review</a></li>
+            <li><a href="#overview">6. Package the capability</a></li>
+          </ul>
+
+          <div class="callout-panel">
+            <h3>Deliverables</h3>
+            <ul>
+              <li><span class="inline-code">output/reconciled_accounts.csv</span></li>
+              <li><span class="inline-code">output/exceptions.csv</span></li>
+              <li><span class="inline-code">output/weekly-account-health.md</span></li>
+              <li>Python workflow + tests + runbook</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
