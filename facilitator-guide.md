@@ -72,7 +72,7 @@ Explain that the **Check** turns a request into an accountable workflow.
 
 ## 0:20–0:44 — Agent Mode demonstration
 
-Follow `demo-script.md`.
+Follow the [polished demonstration script](demo-script.html). The Markdown source remains available in `demo-script.md`.
 
 Narrate the interaction pattern:
 
@@ -167,4 +167,3 @@ Have them record:
 - Do not equate a successful command with a correct business outcome.
 - Do not share sensitive organizational data in the demonstration.
 - Keep the focus on a durable workflow, not on writing Python syntax.
-

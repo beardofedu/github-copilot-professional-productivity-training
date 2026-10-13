@@ -47,7 +47,7 @@
             </div>
           </section>
 
-          <section>
+          <section id="orient">
             <h2>1. Orient the room</h2>
             <p>Open the <span class="inline-code">demo-workspace/</span> folder in VS Code and point the room to:</p>
             <ul>
@@ -59,7 +59,7 @@
             <p>Keep the walkthrough tight: the opening orientation should take no more than seven minutes, including the poll.</p>
           </section>
 
-          <section>
+          <section id="inspect">
             <h2>2. Ask Agent Mode to inspect before building</h2>
             <blockquote>
               Inspect this workspace and read <span class="inline-code">DEMO-BRIEF.md</span> plus every file under <span class="inline-code">data/</span>. Do not create or modify files yet. Report the relationships between the sources, data-quality and reconciliation risks, decisions that cannot be made safely from the files, the proposed output contract, and an implementation and validation plan. Treat unmatched records as visible exceptions. Do not invent mappings.
@@ -68,42 +68,47 @@
             <blockquote>Which assumption would be most dangerous if the agent got it wrong?</blockquote>
             <p>If needed, clarify the safety rule:</p>
             <blockquote>Use exact <span class="inline-code">account_id</span> matches first. Use only mappings explicitly present in <span class="inline-code">account_aliases.json</span> as the fallback. Everything else must go to the exception output.</blockquote>
+            <p class="teaching-point"><strong>Teaching point</strong> Agent Mode should inspect the project and expose assumptions before it changes the project.</p>
           </section>
 
-          <section>
+          <section id="build">
             <h2>3. Build the smallest end-to-end workflow</h2>
             <blockquote>
               Implement the smallest complete version of the workflow described in <span class="inline-code">DEMO-BRIEF.md</span>. Requirements: use standard Python only, keep source files unchanged, resolve usage records by exact account ID and then the approved alias map, write unresolved or invalid records to <span class="inline-code">output/exceptions.csv</span>, calculate adoption percentage and week-over-week active-user change, apply the documented risk rules, write reconciled detail to <span class="inline-code">output/reconciled_accounts.csv</span>, write an executive-friendly Markdown report, and fail clearly when required files or columns are missing. Before editing, restate the files you plan to create and the validation you will run. Then implement, run the workflow, and summarize the actual outputs.
             </blockquote>
             <p>When Agent Mode proposes terminal commands, read them before approval. After the run, inspect the terminal output, the exception file, a few rows of the reconciled CSV, and the report claims in the markdown output.</p>
+            <p class="teaching-point"><strong>Teaching point</strong> A generated file is not evidence. Running the workflow and inspecting the outputs is part of the task.</p>
           </section>
 
-          <section>
+          <section id="test">
             <h2>4. Add tests where failure matters</h2>
             <blockquote>
               Identify the four behaviors most likely to produce a plausible but incorrect report. Add focused automated tests for them using Python's standard <span class="inline-code">unittest</span> library. At minimum cover an approved alias resolving to the correct CRM account, an unknown key remaining unmatched, zero licensed users not causing a divide-by-zero error, and a missing owner triggering the expected risk flag. Run the tests and report the result. Do not weaken business rules merely to make a test pass.
             </blockquote>
             <p>Ask, “What important behavior is still not proven by these tests?”</p>
+            <p class="teaching-point"><strong>Teaching point</strong> Ask the agent to select tests based on consequence, not just coverage.</p>
           </section>
 
-          <section>
+          <section id="review">
             <h2>5. Review the work as a skeptical teammate</h2>
             <blockquote>
               Review the implementation and generated outputs as a skeptical teammate. Look specifically for silent record loss, incorrect joins, non-deterministic output, date assumptions, misleading report language, hard-coded values that should be configuration, and instructions a teammate would need. Rank findings by impact. Do not edit yet.
             </blockquote>
             <p>Then direct a bounded refinement:</p>
             <blockquote>Apply the high-impact fixes only. Re-run the tests and workflow, then show which outputs changed and why.</blockquote>
+            <p class="teaching-point"><strong>Teaching point</strong> Review and refinement are separate decisions. Do not authorize an unbounded rewrite.</p>
           </section>
 
-          <section>
+          <section id="package">
             <h2>6. Package the capability for a small team</h2>
             <blockquote>
               Package this workflow for a teammate. Create <span class="inline-code">RUNBOOK.md</span> with purpose, prerequisites, input contracts, the run command, outputs, review steps, and known limitations; <span class="inline-code">prompts/build-weekly-report.prompt.md</span> with a reusable Agent Mode prompt for next week’s exports; and a concise handoff summary explaining what is automated, what remains human judgment, what exceptions require review, and how the result was validated. Keep the documentation short enough that a teammate will actually use it.
             </blockquote>
             <p>The final project structure becomes the reviewable handoff: implementation, prompt, runbook, tests, output, and exception handling in a single project folder.</p>
+            <p>Do not draft a GitHub issue. The team handoff is the reviewable project folder itself.</p>
           </section>
 
-          <section>
+          <section id="tools">
             <h2>Brief positioning of the other tools</h2>
             <div class="two-col">
               <div>
@@ -118,7 +123,7 @@
             <p>VS Code + Agent Mode remains the strongest fit here because the task spans multiple data files, implementation, execution, tests, documentation, and review.</p>
           </section>
 
-          <section>
+          <section id="recovery">
             <h2>Recovery prompts</h2>
             <div class="card-grid">
               <article>
@@ -137,6 +142,10 @@
                 <h4>If the implementation becomes too complex</h4>
                 <p>“Reduce this to the smallest end-to-end workflow that preserves explicit reconciliation, visible exceptions, tests, and a reviewable report.”</p>
               </article>
+              <article>
+                <h4>If a command fails</h4>
+                <p>“Use the exact command, error, environment, and current file state as evidence. Propose the smallest diagnostic step before changing code.”</p>
+              </article>
             </div>
           </section>
         </article>
@@ -145,12 +154,13 @@
           <h3>Quick outline</h3>
           <ul class="toc">
             <li><a href="#overview">Overview</a></li>
-            <li><a href="#overview">1. Orient the room</a></li>
-            <li><a href="#overview">2. Inspect before build</a></li>
-            <li><a href="#overview">3. Smallest workflow</a></li>
-            <li><a href="#overview">4. Add tests</a></li>
-            <li><a href="#overview">5. Skeptical review</a></li>
-            <li><a href="#overview">6. Package the capability</a></li>
+            <li><a href="#orient">1. Orient the room</a></li>
+            <li><a href="#inspect">2. Inspect before build</a></li>
+            <li><a href="#build">3. Smallest workflow</a></li>
+            <li><a href="#test">4. Add tests</a></li>
+            <li><a href="#review">5. Skeptical review</a></li>
+            <li><a href="#package">6. Package the capability</a></li>
+            <li><a href="#recovery">Recovery prompts</a></li>
           </ul>
 
           <div class="callout-panel">

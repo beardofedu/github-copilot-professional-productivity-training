@@ -203,6 +203,23 @@ body.demo-page {
   margin: 1.5rem 0;
 }
 
+.teaching-point {
+  background: var(--page-dark);
+  border-radius: .75rem;
+  color: #dff7f3 !important;
+  margin-top: 1.5rem;
+  padding: 1rem 1.15rem;
+}
+
+.teaching-point strong {
+  color: #9ee6dd;
+  display: block;
+  font-size: .75rem;
+  letter-spacing: .1em;
+  margin-bottom: .25rem;
+  text-transform: uppercase;
+}
+
 .callout-panel {
   margin-top: 1.8rem;
   padding: 1.35rem 1.25rem;
@@ -321,5 +338,19 @@ body.demo-page {
   .article-panel {
     border: 0;
     padding: 0;
+  }
+
+  .article-panel section {
+    break-inside: avoid;
+  }
+
+  .teaching-point {
+    background: #edf9f7;
+    border-left: .2rem solid var(--page-teal);
+    color: var(--page-ink) !important;
+  }
+
+  .teaching-point strong {
+    color: var(--page-teal);
   }
 }

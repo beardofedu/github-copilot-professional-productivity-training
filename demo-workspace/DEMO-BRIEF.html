@@ -43,7 +43,7 @@
             <p>Build a repeatable workflow that reconciles CRM accounts with product usage and the prior week’s results.</p>
           </section>
 
-          <section>
+          <section id="inputs">
             <h2>Inputs</h2>
             <ul>
               <li><span class="inline-code">data/crm_accounts.csv</span> is the source of truth for account identity, ownership, region, and renewal date.</li>
@@ -53,7 +53,7 @@
             </ul>
           </section>
 
-          <section>
+          <section id="outputs">
             <h2>Required outputs</h2>
             <ul>
               <li><span class="inline-code">output/reconciled_accounts.csv</span></li>
@@ -63,7 +63,7 @@
             <p>The desired capability also includes a repeatable Python workflow, automated tests, a runbook, and an agent prompt for future export runs.</p>
           </section>
 
-          <section>
+          <section id="rules">
             <h2>Rules</h2>
             <ul>
               <li>Never modify files under <span class="inline-code">data/</span>.</li>
@@ -77,7 +77,7 @@
             </ul>
           </section>
 
-          <section>
+          <section id="quality">
             <h2>Quality expectations</h2>
             <div class="card-grid">
               <article>
@@ -104,9 +104,10 @@
           <h3>At a glance</h3>
           <ul class="toc">
             <li><a href="#brief">Brief goal</a></li>
-            <li><a href="#brief">Inputs</a></li>
-            <li><a href="#brief">Rules</a></li>
-            <li><a href="#brief">Output expectations</a></li>
+            <li><a href="#inputs">Inputs</a></li>
+            <li><a href="#outputs">Required outputs</a></li>
+            <li><a href="#rules">Rules</a></li>
+            <li><a href="#quality">Quality expectations</a></li>
           </ul>
 
           <div class="callout-panel">
