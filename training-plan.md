@@ -1,4 +1,4 @@
-# Outfitter with Microsoft
+# GitHub Copilot
 
 ## Training design
 
@@ -27,7 +27,7 @@ Participants will be able to:
 
 ## Key message
 
-> Outfitter builds capability: bring a real outcome into VS Code, let Agent Mode work across the project, and keep human judgment at every decision boundary.
+> GitHub Copilot helps build capability: bring a real outcome into VS Code, let Agent Mode work across the project, and keep human judgment at every decision boundary.
 
 The session assumes mixed experience. Some attendees already build sophisticated solutions in VS Code; others need a quick orientation. The demonstration should feel credible to experienced builders while making each interaction legible to newer users.
 
@@ -106,7 +106,7 @@ This is deliberately more advanced than parsing one CSV. It demonstrates project
 
 The session ends with a concrete way to continue. Every option is remote-accessible, so no travel is required.
 
-| Event | When | Why it fits Outfitter | Link |
+| Event | When | Why it fits GitHub Copilot | Link |
 |---|---|---|---|
 | GitHub Universe 2026 | October 28–29, 2026 | Free virtual pass covering Copilot, Agent Mode, and agentic workflows, with sessions available on demand afterward. | <https://githubuniverse.com> |
 | Microsoft Ignite 2026 | November 17–20, 2026 | Free digital pass spanning Copilot, agents, and the wider Microsoft tooling these capabilities connect to. | <https://ignite.microsoft.com> |
@@ -133,4 +133,3 @@ Pair each event with the capability the participant just committed to, so attend
 - Experienced participants see a credible multi-source automation rather than a toy example.
 - Participants can describe Agent Mode as a project collaborator that still requires boundaries and evidence.
 - Participants leave with a reusable method for personal work and small-team handoff.
-

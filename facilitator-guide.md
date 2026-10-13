@@ -1,4 +1,4 @@
-# Facilitator Guide: Outfitter with Microsoft
+# Facilitator Guide: GitHub Copilot
 
 ## Before the session
 
@@ -13,7 +13,7 @@
 
 ## 0:00–0:07 — VS Code trailhead
 
-**Say:** “Outfitter is about building capability. Today, our workshop is VS Code, and Agent Mode is our project collaborator.”
+**Say:** “GitHub Copilot is about building capability. Today, our workshop is VS Code, and Agent Mode is our project collaborator.”
 
 Show only the surfaces participants need:
 
@@ -41,7 +41,7 @@ Opening poll:
 
 Frame the persona:
 
-> Outfitter builds dashboards, apps, automation, AI agents, and code. The objective is not more generated text; it is a useful capability that can be run, checked, and shared.
+> GitHub Copilot helps build dashboards, apps, automation, AI agents, and code. The objective is not more generated text; it is a useful capability that can be run, checked, and shared.
 
 Personal productivity means reducing the friction in a task you own. Small-team productivity means leaving behind enough context, tests, and instructions for someone else to reuse the work.
 

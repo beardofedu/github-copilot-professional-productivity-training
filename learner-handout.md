@@ -1,4 +1,4 @@
-# Outfitter with Microsoft
+# GitHub Copilot
 
 ## Build the Capability
 
@@ -90,4 +90,3 @@ All remote-accessible — no travel required. Pick one and pair it with the capa
 | GitHub events and webinars | Ongoing | <https://github.com/resources/events> |
 
 **Event I am registering for:**  
-

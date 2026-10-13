@@ -1,4 +1,4 @@
-# Outfitter with Microsoft
+# GitHub Copilot
 
 **Theme:** Build the Capability
 
@@ -14,7 +14,7 @@ The session focuses on personal and small-team productivity. Participants use Co
 - [Starter demo workspace](demo-workspace/DEMO-BRIEF.html)
 - [Visual learner handout](learner-handout.html)
 - [Plain-text learner handout](learner-handout.md)
-- [Presentation](outfitter-with-microsoft.pptx)
+- [Presentation](github-copilot.pptx)
 - [Training site](https://beardofedu.github.io/github-copilot-professional-productivity-training/)
 
 ## Demonstration
@@ -33,4 +33,3 @@ The session closes with remote-accessible, free-to-attend-online events so parti
 - [GitHub events and webinars](https://github.com/resources/events) — ongoing calendar and recordings
 
 Confirm dates and registration links before each delivery; schedules change.
-
