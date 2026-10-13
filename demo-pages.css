@@ -251,6 +251,11 @@ body.demo-page {
   margin-bottom: .25rem;
 }
 
+.metric-grid .stat .text-link {
+  display: block;
+  margin-top: .65rem;
+}
+
 .card-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
