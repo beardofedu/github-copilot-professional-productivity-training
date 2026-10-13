@@ -123,7 +123,23 @@ p { color: var(--muted); }
 .events-note { color: var(--muted); font-size: .92rem; margin-top: 2rem; }
 .closing { background: var(--dark); color: var(--white); max-width: none; text-align: center; }.closing h2 { color: var(--white); font-size: clamp(2.5rem, 6vw, 5.5rem); margin: 1.5rem auto 2rem; }
 .closing p { color: #c9f4ee; font-size: 1.2rem; }
-.site-footer { display: flex; justify-content: space-between; margin: 0 auto; max-width: var(--max); padding: 2rem 1.25rem; }
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 auto;
+  max-width: var(--max);
+  padding: 2rem 1.25rem;
+}
+
+.repo-link {
+  color: var(--teal);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.repo-link:hover { color: var(--dark); }
 
 @media (max-width: 800px) {
   nav { display: none; }
