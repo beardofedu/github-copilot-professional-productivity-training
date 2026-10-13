@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Facilitator guide for a GitHub Copilot training session focused on VS Code, Agent Mode, and practical capability building.">
+  <title>Facilitator Guide · GitHub Copilot</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="demo-pages.css">
+</head>
+<body class="demo-page">
+  <div class="demo-shell">
+    <header class="demo-header" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="GitHub Copilot home">
+        <span class="brand-mark">✦</span>
+        <span>GitHub Copilot</span>
+      </a>
+      <nav>
+        <a href="index.html">Training site</a>
+        <a href="demo-script.html">Demo script</a>
+        <a href="demo-workspace/DEMO-BRIEF.html">Starter brief</a>
+        <a href="facilitator-guide.md">Markdown source</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="demo-hero">
+        <div class="demo-hero-inner">
+          <div class="demo-kicker">Facilitator guide</div>
+          <h1>Lead the session with context, evidence, and a clear next step.</h1>
+          <p>A practical run-of-show for a VS Code–first GitHub Copilot workshop: orient the room, inspect assumptions, build in Agent Mode, prove the output, and leave people with a repeatable workflow.</p>
+          <div class="demo-hero-actions">
+            <a class="button button-primary" href="#before-session">Read the guide</a>
+            <a class="button button-secondary" href="demo-script.html">Open the demo script</a>
+          </div>
+        </div>
+      </section>
+
+      <div class="demo-page-grid">
+        <article class="article-panel" id="before-session">
+          <section>
+            <div class="badge">Before the session</div>
+            <h2>Set up the room and the workspace</h2>
+            <ul>
+              <li>Open the repository's <span class="inline-code">demo-workspace/</span> folder in VS Code.</li>
+              <li>Confirm GitHub Copilot is signed in and Agent Mode is available.</li>
+              <li>Open Explorer, Copilot Chat, and the integrated terminal.</li>
+              <li>Keep source control visible but begin with no generated script or outputs.</li>
+              <li>Test the demo from a clean copy and keep completed outputs available as backup.</li>
+              <li>Increase editor, chat, and terminal font sizes.</li>
+              <li>Use synthetic data only.</li>
+              <li>Check the event links in the closing segment are still current and update the slide or handout if a date has passed.</li>
+            </ul>
+          </section>
+
+          <section id="trailhead">
+            <h2>0:00–0:07 · VS Code trailhead</h2>
+            <p><strong>Say:</strong> “GitHub Copilot is about building capability. Today, our workshop is VS Code, and Agent Mode is our project collaborator.”</p>
+            <p>Show only the surfaces participants need:</p>
+            <ol>
+              <li><strong>Explorer:</strong> the project folder and source files.</li>
+              <li><strong>Copilot Chat:</strong> where intent and feedback are communicated.</li>
+              <li><strong>Agent Mode:</strong> where Copilot can inspect files, edit the project, and use tools.</li>
+              <li><strong>Integrated terminal:</strong> where commands, scripts, and tests run.</li>
+            </ol>
+            <p>Clarify the modes:</p>
+            <ul>
+              <li><strong>Ask/Chat:</strong> explanation and focused conversation.</li>
+              <li><strong>Edit:</strong> targeted changes you direct.</li>
+              <li><strong>Agent:</strong> a bounded outcome that may require multiple files, commands, and iteration.</li>
+            </ul>
+            <p>Tell newer participants they do not need to memorize shortcuts. Tell experienced participants the value of the demo is the project-level interaction and review pattern, not basic VS Code navigation.</p>
+            <p><strong>Opening poll:</strong></p>
+            <ul>
+              <li>I build in VS Code most weeks.</li>
+              <li>I use Copilot Chat but rarely use Agent Mode.</li>
+              <li>I use Agent Mode for multi-file work.</li>
+              <li>I am new to VS Code.</li>
+            </ul>
+          </section>
+
+          <section id="capability">
+            <h2>0:07–0:12 · Build the capability</h2>
+            <p>Frame the persona:</p>
+            <blockquote>GitHub Copilot helps build dashboards, apps, automation, AI agents, and code. The objective is not more generated text; it is a useful capability that can be run, checked, and shared.</blockquote>
+            <p>Personal productivity means reducing the friction in a task you own. Small-team productivity means leaving behind enough context, tests, and instructions for someone else to reuse the work.</p>
+            <p>Briefly position the other tools:</p>
+            <ul>
+              <li>Use the <strong>Copilot app</strong> when the work begins as broad planning outside a project.</li>
+              <li>Use <strong>Copilot CLI</strong> when the task is predominantly terminal-first.</li>
+              <li>Stay in <strong>VS Code</strong> when the work spans files, code, outputs, and validation.</li>
+            </ul>
+            <p>Do not open separate demos for the app or CLI.</p>
+          </section>
+
+          <section id="goal-context">
+            <h2>0:12–0:20 · Goal–Context–Constraints–Check</h2>
+            <h3>Weak request</h3>
+            <blockquote>Build the weekly report.</blockquote>
+            <p>Ask what the agent would have to guess: sources, joining rules, risk definitions, output format, safety boundaries, and evidence.</p>
+            <h3>Stronger request</h3>
+            <blockquote>
+              <strong>Goal:</strong> Build a repeatable account-health report from the CRM, usage, and prior-week exports.<br>
+              <strong>Context:</strong> Usage keys do not always match CRM account IDs. An approved alias map is included. The report is reviewed by a five-person team every Friday.<br>
+              <strong>Constraints:</strong> Never modify source files. Never guess an unmatched account. Use standard Python only. Keep reconciliation rules explicit and readable.<br>
+              <strong>Check:</strong> Create exception output, add tests for risky rules, run the workflow, and summarize the evidence before calling it complete.
+            </blockquote>
+            <p>Explain that the <strong>Check</strong> turns a request into an accountable workflow.</p>
+          </section>
+
+          <section id="demo-flow">
+            <h2>0:20–0:44 · Agent Mode demonstration</h2>
+            <p>Follow the <a class="text-link" href="demo-script.html">polished demonstration script</a>. The Markdown source remains available in <span class="inline-code">demo-script.md</span>.</p>
+            <p>Narrate the interaction pattern:</p>
+            <ul>
+              <li>“First, I want the agent to inspect—not implement.”</li>
+              <li>“I am reviewing its assumptions before authorizing edits.”</li>
+              <li>“The exception file is a feature: uncertainty must remain visible.”</li>
+              <li>“Now the agent is running the work, not merely displaying code.”</li>
+              <li>“Tests and output inspection are the evidence.”</li>
+            </ul>
+            <p>Ask the audience at three points:</p>
+            <ol>
+              <li>After the plan: “What decision is still underspecified?”</li>
+              <li>Before running: “What could silently make this report wrong?”</li>
+              <li>After output: “Which result would you spot-check against the sources?”</li>
+            </ol>
+            <p>If Agent Mode asks to run a command, read it aloud and explain its impact before approving it.</p>
+          </section>
+
+          <section id="package-team">
+            <h2>0:44–0:51 · Package for a small team</h2>
+            <p>Ask Agent Mode to add:</p>
+            <ul>
+              <li><span class="inline-code">RUNBOOK.md</span> with prerequisites, commands, inputs, outputs, and known limitations,</li>
+              <li><span class="inline-code">prompts/build-weekly-report.prompt.md</span> with the reusable task prompt,</li>
+              <li>tests beside the implementation,</li>
+              <li>and a concise handoff summary.</li>
+            </ul>
+            <blockquote>“The deliverable is not only the script. The capability is the script plus the prompt, evidence, instructions, and visible exceptions.”</blockquote>
+            <p>Show how a teammate can:</p>
+            <ol>
+              <li>inspect the runbook,</li>
+              <li>replace the dated exports,</li>
+              <li>run the command,</li>
+              <li>review exceptions,</li>
+              <li>and verify the Markdown report.</li>
+            </ol>
+            <p>This replaces the former GitHub issue step.</p>
+          </section>
+
+          <section id="trust-evidence">
+            <h2>0:51–0:55 · Trust the evidence</h2>
+            <p>Use four checks:</p>
+            <ul>
+              <li><strong>Accuracy:</strong> Do joins, calculations, and report claims match the sources?</li>
+              <li><strong>Safety:</strong> Are source files immutable? Are outputs written to a separate folder?</li>
+              <li><strong>Policy:</strong> Is the data appropriate for Copilot and the chosen storage location?</li>
+              <li><strong>Fitness:</strong> Do tests and representative inputs cover real conditions?</li>
+            </ul>
+            <p>Highlight the most important failure mode: a polished report built from silently dropped or incorrectly matched records.</p>
+          </section>
+
+          <section id="keep-building">
+            <h2>0:55–0:58 · Keep building</h2>
+            <p>Close the capability loop before Q&amp;A. Every option here is remote-accessible, so nobody needs to travel.</p>
+            <div class="metric-grid">
+              <div class="stat"><strong>GitHub Universe 2026</strong> October 28–29, 2026 · free virtual pass.</div>
+              <div class="stat"><strong>Microsoft Ignite 2026</strong> November 17–20, 2026 · free digital pass.</div>
+              <div class="stat"><strong>Microsoft Reactor</strong> Recurring live Copilot sessions.</div>
+              <div class="stat"><strong>GitHub events</strong> Ongoing webinars and recordings.</div>
+            </div>
+            <p>Say it this way:</p>
+            <blockquote>Pick one of these and pair it with the capability you are about to write down. Register before you leave the room — a session you attend with a specific build in mind is worth far more than one you attend out of general interest.</blockquote>
+            <p>Confirm dates and registration links the week you deliver; schedules change. If a date has passed, point to the on-demand recordings instead.</p>
+          </section>
+
+          <section id="qa">
+            <h2>0:58–1:00 · Q&amp;A and next build</h2>
+            <p>Ask participants to choose a task with:</p>
+            <ul>
+              <li>more than one meaningful step,</li>
+              <li>a recurring or reusable outcome,</li>
+              <li>bounded inputs,</li>
+              <li>a clear verification method,</li>
+              <li>and low enough risk for a first experiment.</li>
+            </ul>
+            <p>Have them record:</p>
+            <ul>
+              <li>Capability I want to build:</li>
+              <li>Folder or project it belongs in:</li>
+              <li>Context Agent Mode needs:</li>
+              <li>Decisions that remain mine:</li>
+              <li>Evidence I require:</li>
+              <li>What I will share with my team:</li>
+            </ul>
+          </section>
+
+          <section id="guardrails">
+            <h2>Facilitation guardrails</h2>
+            <ul>
+              <li>Do not turn the orientation into a product tour.</li>
+              <li>Do not let Agent Mode begin implementation before the plan and assumptions are reviewed.</li>
+              <li>Do not imply every ambiguity should be automated; preserve human decision points.</li>
+              <li>Do not hide agent errors. Use the exact error as new context.</li>
+              <li>Do not equate a successful command with a correct business outcome.</li>
+              <li>Do not share sensitive organizational data in the demonstration.</li>
+              <li>Keep the focus on a durable workflow, not on writing Python syntax.</li>
+            </ul>
+          </section>
+        </article>
+
+        <aside class="sidebar-panel" aria-label="Facilitator guide outline">
+          <h3>Quick outline</h3>
+          <ul class="toc">
+            <li><a href="#before-session">Before the session</a></li>
+            <li><a href="#trailhead">VS Code trailhead</a></li>
+            <li><a href="#capability">Build the capability</a></li>
+            <li><a href="#goal-context">Goal–Context–Constraints–Check</a></li>
+            <li><a href="#demo-flow">Agent Mode demo</a></li>
+            <li><a href="#package-team">Package for a small team</a></li>
+            <li><a href="#trust-evidence">Trust the evidence</a></li>
+            <li><a href="#keep-building">Keep building</a></li>
+            <li><a href="#qa">Q&amp;A</a></li>
+            <li><a href="#guardrails">Guardrails</a></li>
+          </ul>
+
+          <div class="callout-panel">
+            <h3>Facilitating tips</h3>
+            <ul>
+              <li>Keep the opening orientation short and concrete.</li>
+              <li>Review assumptions before authorizing edits.</li>
+              <li>Show the exception file as a feature, not a bug.</li>
+              <li>Make all verification visible and explicit.</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <span>GitHub Copilot · Build the Capability</span>
+    <span><a href="index.html">Training site</a> · <a href="facilitator-guide.md">Markdown source</a> · <a class="repo-link" href="https://github.com/beardofedu/github-copilot-professional-productivity-training" target="_blank" rel="noopener">Source repository</a></span>
+  </footer>
+</body>
+</html>

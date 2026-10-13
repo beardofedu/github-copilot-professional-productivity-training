@@ -9,7 +9,8 @@ The session focuses on personal and small-team productivity. Participants use Co
 ## Materials
 
 - [Training plan](training-plan.md)
-- [Facilitator guide](facilitator-guide.md)
+- [Facilitator guide](facilitator-guide.html)
+- [Facilitator guide source](facilitator-guide.md)
 - [Demonstration script](demo-script.html)
 - [Starter demo workspace](demo-workspace/DEMO-BRIEF.html)
 - [Visual learner handout](learner-handout.html)
