@@ -220,6 +220,42 @@ body.demo-page {
   text-transform: uppercase;
 }
 
+.review-guide {
+  display: grid;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.artifact-review {
+  background: linear-gradient(180deg, var(--page-surface-alt), #fff);
+  border: 1px solid var(--page-line);
+  border-left: .3rem solid var(--page-teal-bright);
+  border-radius: .9rem;
+  padding: 1.1rem 1.2rem;
+}
+
+.artifact-review h3 {
+  margin-top: 0;
+}
+
+.artifact-review dl {
+  margin: 0;
+}
+
+.artifact-review dt {
+  color: var(--page-dark);
+  font-weight: 850;
+  margin-top: .75rem;
+}
+
+.artifact-review dt:first-child {
+  margin-top: 0;
+}
+
+.artifact-review dd {
+  margin: .15rem 0 0;
+}
+
 .callout-panel {
   margin-top: 1.8rem;
   padding: 1.35rem 1.25rem;
@@ -346,6 +382,10 @@ body.demo-page {
   }
 
   .article-panel section {
+    break-inside: avoid;
+  }
+
+  .artifact-review {
     break-inside: avoid;
   }
 

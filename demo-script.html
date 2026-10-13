@@ -78,6 +78,61 @@
               Implement the smallest complete version of the workflow described in <span class="inline-code">DEMO-BRIEF.md</span>. Requirements: use standard Python only, keep source files unchanged, resolve usage records by exact account ID and then the approved alias map, write unresolved or invalid records to <span class="inline-code">output/exceptions.csv</span>, calculate adoption percentage and week-over-week active-user change, apply the documented risk rules, write reconciled detail to <span class="inline-code">output/reconciled_accounts.csv</span>, write an executive-friendly Markdown report, and fail clearly when required files or columns are missing. Before editing, restate the files you plan to create and the validation you will run. Then implement, run the workflow, and summarize the actual outputs.
             </blockquote>
             <p>When Agent Mode proposes terminal commands, read them before approval. After the run, inspect the terminal output, the exception file, a few rows of the reconciled CSV, and the report claims in the markdown output.</p>
+            <h3>Instructor review guide: workflow and generated outputs</h3>
+            <div class="review-guide">
+              <article class="artifact-review">
+                <h3>Implementation script or scripts</h3>
+                <dl>
+                  <dt>Expected structure</dt>
+                  <dd>A small standard-library workflow should read the four fixed inputs, validate required columns, resolve exact IDs before aliases, calculate metrics and flags, and write all three outputs. The report date should be explicitly set to <span class="inline-code">2026-10-09</span>, ideally as a named constant or command argument rather than scattered literals.</dd>
+                  <dt>Verify</dt>
+                  <dd>Find the exact-ID-first branch, the only approved aliases (<span class="inline-code">CONTOSO-ENERGY</span> → <span class="inline-code">ACCT-1002</span> and <span class="inline-code">AW-004</span> → <span class="inline-code">ACCT-1004</span>), the zero-license guard, and explicit handling for unmatched usage and CRM accounts with no current usage. The run should exit successfully, name the files written, and report counts that reconcile five resolved usage keys, <span class="inline-code">UNKNOWN-77</span>, and missing current usage for <span class="inline-code">ACCT-1006</span>.</dd>
+                  <dt>Narrate</dt>
+                  <dd>The code is valuable because the business rules are visible and repeatable, not because Copilot produced a lot of code. Show where uncertainty becomes an exception instead of being hidden.</dd>
+                  <dt>Red flags</dt>
+                  <dd>The script uses today’s date, hard-codes an unapproved match, modifies <span class="inline-code">data/</span>, silently drops a row, uses integer division, catches an error and still reports success, or claims six clean reconciliations. A successful run should have no traceback and should return exit code 0; a missing file or required column should produce a clear non-zero failure.</dd>
+                </dl>
+              </article>
+              <article class="artifact-review">
+                <h3><span class="inline-code">output/reconciled_accounts.csv</span></h3>
+                <dl>
+                  <dt>Expected structure</dt>
+                  <dd>One header row plus reviewable account detail with source identity, current and prior usage, adoption, week-over-week change, and risk or review reasons. All five resolved usage records should be traceable even if the implementation places an invalid resolved record only in the exception file.</dd>
+                  <dt>Verify</dt>
+                  <dd>Representative values are <span class="inline-code">ACCT-1001</span> at <span class="inline-code">72%</span> adoption and <span class="inline-code">+4</span> active users, <span class="inline-code">ACCT-1002</span> at <span class="inline-code">32.5%</span> and <span class="inline-code">-3</span>, <span class="inline-code">ACCT-1003</span> at <span class="inline-code">22.5%</span> and <span class="inline-code">-4</span>, and <span class="inline-code">ACCT-1004</span> at <span class="inline-code">95%</span> and <span class="inline-code">+4</span>. <span class="inline-code">ACCT-1005</span> must show adoption as unavailable—not <span class="inline-code">0%</span>—because both active and licensed users are zero.</dd>
+                  <dt>Narrate</dt>
+                  <dd>Spot-check values back to both source files. Emphasize that a plausible percentage is not enough; identity resolution, denominator handling, prior-week comparison, and the reason for each flag all need evidence.</dd>
+                  <dt>Red flags</dt>
+                  <dd>Alias keys appear as new accounts, percentages are rounded into misleading whole numbers, <span class="inline-code">ACCT-1005</span> causes a divide-by-zero or becomes <span class="inline-code">0%</span>, <span class="inline-code">ACCT-1006</span> is presented as current, or the file contains fewer records without an explained exception.</dd>
+                </dl>
+              </article>
+              <article class="artifact-review">
+                <h3><span class="inline-code">output/exceptions.csv</span></h3>
+                <dl>
+                  <dt>Expected structure</dt>
+                  <dd>Each unresolved or invalid condition should retain the source key or account ID, a reason, and enough original context to investigate. One row per record or one row per reason are both acceptable if the choice is documented.</dd>
+                  <dt>Verify</dt>
+                  <dd>The exceptions must account for <span class="inline-code">UNKNOWN-77</span> as an unapproved usage key, <span class="inline-code">ACCT-1006</span> as a CRM account with no current usage row, and <span class="inline-code">ACCT-1005</span> as a zero-license record whose adoption is unavailable. Do not validate only by row count because one record may have multiple reasons.</dd>
+                  <dt>Narrate</dt>
+                  <dd>Exceptions are a designed output, not debris. They preserve the human decisions that automation cannot make safely.</dd>
+                  <dt>Red flags</dt>
+                  <dd>The file is empty, contains only <span class="inline-code">UNKNOWN-77</span>, omits source values, treats <span class="inline-code">UNKNOWN-77</span> as a guessed account, or fails to surface the zero-license and missing-current-usage conditions somewhere reviewable.</dd>
+                </dl>
+              </article>
+              <article class="artifact-review">
+                <h3><span class="inline-code">output/weekly-account-health.md</span></h3>
+                <dl>
+                  <dt>Expected structure</dt>
+                  <dd>A dated report should separate factual totals, rule-based account flags, unresolved exceptions, and recommended human review. Claims should be traceable to the CSV outputs and use <span class="inline-code">2026-10-09</span> as the report date.</dd>
+                  <dt>Verify</dt>
+                  <dd>The report should distinguish six CRM accounts from six usage rows; five usage keys resolve and one does not. Under the stated rules, <span class="inline-code">ACCT-1004</span> is the only resolved account with no flag. <span class="inline-code">ACCT-1001</span> is within 37 days of renewal; <span class="inline-code">ACCT-1002</span> is below 40% adoption; <span class="inline-code">ACCT-1003</span> has no owner, <span class="inline-code">22.5%</span> adoption, 38-day-old activity, and renewal in 72 days; <span class="inline-code">ACCT-1005</span> has unavailable adoption, 55-day-old activity, and renewal in 22 days; and <span class="inline-code">ACCT-1006</span> has incomplete current reconciliation.</dd>
+                  <dt>Narrate</dt>
+                  <dd>Separate facts from interpretations. Healthy usage does not erase a renewal flag, and polished prose must not turn an unresolved record into a conclusion.</dd>
+                  <dt>Red flags</dt>
+                  <dd>The report uses the current date, calls all six accounts reconciled, says <span class="inline-code">ACCT-1005</span> has zero adoption, omits <span class="inline-code">ACCT-1006</span> or <span class="inline-code">UNKNOWN-77</span>, combines facts and recommendations without labels, or contains totals that cannot be reproduced from the outputs.</dd>
+                </dl>
+              </article>
+            </div>
             <p class="teaching-point"><strong>Teaching point</strong> A generated file is not evidence. Running the workflow and inspecting the outputs is part of the task.</p>
           </section>
 
@@ -87,6 +142,22 @@
               Identify the four behaviors most likely to produce a plausible but incorrect report. Add focused automated tests for them using Python's standard <span class="inline-code">unittest</span> library. At minimum cover an approved alias resolving to the correct CRM account, an unknown key remaining unmatched, zero licensed users not causing a divide-by-zero error, and a missing owner triggering the expected risk flag. Run the tests and report the result. Do not weaken business rules merely to make a test pass.
             </blockquote>
             <p>Ask, “What important behavior is still not proven by these tests?”</p>
+            <h3>Instructor review guide: automated tests</h3>
+            <div class="review-guide">
+              <article class="artifact-review">
+                <h3>Automated tests</h3>
+                <dl>
+                  <dt>Expected structure</dt>
+                  <dd>A discoverable <span class="inline-code">unittest</span> module—typically under <span class="inline-code">tests/</span>—should exercise reconciliation and calculations with controlled fixtures or temporary files. Tests should call production logic rather than duplicate its implementation.</dd>
+                  <dt>Verify</dt>
+                  <dd>At minimum, tests prove <span class="inline-code">CONTOSO-ENERGY</span> resolves to <span class="inline-code">ACCT-1002</span>, <span class="inline-code">UNKNOWN-77</span> remains unmatched, zero licensed users return unavailable adoption without raising an error, and a blank owner flags <span class="inline-code">ACCT-1003</span>. A normal standard-library run should end with at least <span class="inline-code">Ran 4 tests</span> and <span class="inline-code">OK</span>; additional focused tests are welcome.</dd>
+                  <dt>Narrate</dt>
+                  <dd>These tests defend against believable wrong answers: a guessed join, a lost exception, a broken denominator, or a missing business-rule flag. The terminal result is evidence only when the tests target production behavior.</dd>
+                  <dt>Red flags</dt>
+                  <dd>Tests only check that files exist, depend on previously generated output, alter the source CSVs, assert the same formula they reimplemented locally, swallow warnings, or pass while the workflow command fails.</dd>
+                </dl>
+              </article>
+            </div>
             <p class="teaching-point"><strong>Teaching point</strong> Ask the agent to select tests based on consequence, not just coverage.</p>
           </section>
 
@@ -105,6 +176,35 @@
             <blockquote>
               Package this workflow for a teammate. Create <span class="inline-code">RUNBOOK.md</span> with purpose, prerequisites, input contracts, the run command, outputs, review steps, and known limitations; <span class="inline-code">prompts/build-weekly-report.prompt.md</span> with a reusable Agent Mode prompt for next week’s exports; and a concise handoff summary explaining what is automated, what remains human judgment, what exceptions require review, and how the result was validated. Keep the documentation short enough that a teammate will actually use it.
             </blockquote>
+            <h3>Instructor review guide: team handoff files</h3>
+            <div class="review-guide">
+              <article class="artifact-review">
+                <h3><span class="inline-code">RUNBOOK.md</span></h3>
+                <dl>
+                  <dt>Expected structure</dt>
+                  <dd>Purpose, Python prerequisite, fixed input contracts, exact run and test commands, output descriptions, review steps, failure behavior, and known limitations should fit in a short operational document.</dd>
+                  <dt>Verify</dt>
+                  <dd>A teammate can identify <span class="inline-code">2026-10-09</span> as the deterministic demo date, knows that exact IDs precede the alias map, can find all three outputs, and is told to review <span class="inline-code">UNKNOWN-77</span>, <span class="inline-code">ACCT-1006</span>, and the zero-license condition for <span class="inline-code">ACCT-1005</span>.</dd>
+                  <dt>Narrate</dt>
+                  <dd>The runbook turns a one-time demo into an operable team capability. It should explain how to judge the result, not merely how to launch the script.</dd>
+                  <dt>Red flags</dt>
+                  <dd>The documented commands do not match the files created, required columns or exception review are absent, the runbook promises automatic resolution of unknown accounts, or it omits the test command and failure expectations.</dd>
+                </dl>
+              </article>
+              <article class="artifact-review">
+                <h3><span class="inline-code">prompts/build-weekly-report.prompt.md</span></h3>
+                <dl>
+                  <dt>Expected structure</dt>
+                  <dd>A reusable Agent Mode prompt should instruct the agent to inspect first, preserve <span class="inline-code">data/</span>, enforce exact-ID-then-approved-alias matching, keep exceptions visible, run tests and the workflow, and summarize evidence before claiming success.</dd>
+                  <dt>Verify</dt>
+                  <dd>The prompt names the input and output contracts, requires a supplied report date rather than today’s date, asks for explicit validation, and preserves human review for unmatched, invalid, or incomplete records.</dd>
+                  <dt>Narrate</dt>
+                  <dd>A reusable prompt carries forward guardrails and review habits, not this week’s conclusions. Next week’s numbers may change, but the safety contract should not.</dd>
+                  <dt>Red flags</dt>
+                  <dd>The prompt embeds this week’s calculated results as expected future values, authorizes inferred mappings, lets the agent overwrite source exports, omits test execution, or asks for a polished summary without requiring exception and source reconciliation.</dd>
+                </dl>
+              </article>
+            </div>
             <p>The final project structure becomes the reviewable handoff: implementation, prompt, runbook, tests, output, and exception handling in a single project folder.</p>
             <p>Do not draft a GitHub issue. The team handoff is the reviewable project folder itself.</p>
           </section>
